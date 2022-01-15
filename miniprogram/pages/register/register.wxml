@@ -1,0 +1,6 @@
+<!--pages/register/register.wxml-->
+<view>
+    <view wx:if="pageStatus = 'unknown'">
+        <button>aa</button>
+    </view>
+</view>
