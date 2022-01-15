@@ -28,8 +28,7 @@
             "disablePlugins": [],
             "outputPath": ""
         },
-        "enableEngineNative": false,
-        "useIsolateContext": true,
+        "useIsolateContext": false,
         "userConfirmedBundleSwitch": false,
         "packNpmManually": false,
         "packNpmRelationList": [],
@@ -37,7 +36,8 @@
         "disableUseStrict": false,
         "minifyWXML": true,
         "showES6CompileOption": false,
-        "useCompilerPlugins": false
+        "useCompilerPlugins": false,
+        "ignoreUploadUnusedFiles": true
     },
     "appid": "wx5c9d275fba3995b9",
     "projectname": "SGRZ",

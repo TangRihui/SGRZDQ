@@ -6,11 +6,12 @@
         "pages/deployFunctions/deployFunctions"
         ],
     "window": {
-        "backgroundColor": "#F6F6F6",
+        "backgroundColor": "#07c160",
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#F6F6F6",
-        "navigationBarTitleText": "云开发 QuickStart",
-        "navigationBarTextStyle": "black"
+        "navigationBarBackgroundColor": "#07c160",
+        "navigationBarTitleText": "热轧作业区信息采集系统",
+        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom"
     },
     "sitemapLocation": "sitemap.json",
     "style": "v2"

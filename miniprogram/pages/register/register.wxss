@@ -1,1 +1,23 @@
 /* pages/register/register.wxss */
+view {
+    text-align: center;
+}
+
+.logo-container {
+    text-align: center;
+    padding: 200rpx 0 160rpx 0;
+}
+
+.logo-container .title {
+    font-size: 50rpx;
+}
+.description {
+    font-size: 36rpx;
+}
+
+button {
+    margin: 75rpx 0 45rpx 0;
+}
+.active-btn {
+    background-color: #ececec;
+}

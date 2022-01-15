@@ -1,6 +1,36 @@
 <!--pages/register/register.wxml-->
-<view>
-    <view wx:if="pageStatus = 'unknown'">
-        <button>aa</button>
+<mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
+</mp-navigation-bar>
+
+<view class="login" wx:if="{{pageStatus == 'unknown'}}">
+    <view class="logo-container">
+        <!-- <image src="../../image/nebula.png" class="logo"></image> -->
+        <text class="title">热轧作业区信息采集系统</text>
+    </view>
+    <text class="description">点击下方按钮注册/登录</text>
+    <button class="weui-btn weui-btn_primary" bindtap="getUserProfile"> 注册 </button>
+    <button class="weui-btn weui-btn_default active-btn" bindtap="getUserProfile"> 使用微信账号登录 </button>
+    <button class="weui-btn weui-btn_default active-btn" bindgetuserinfo="onGotUserInfo"> 使用密码登录 </button>
+</view>
+
+
+
+
+<!-- 用户 openid -->
+<view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}" class="userinfo-opendata">
+        <view class="userinfo-block-avatar" bindtap="bindViewTap">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" class="userinfo-avatar" style="background-image: url({{avatarUrl}})" size="default"></button>
+        <button wx:else open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})" size="default"></button>
+    </block>
+    <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-block-avatar" src="{{avatarUrl}}" mode="cover"></image>
+    </block>
+    <view class="userinfo-nickname-wrapper">
+        <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
     </view>
 </view>
