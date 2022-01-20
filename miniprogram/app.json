@@ -1,17 +1,41 @@
 {
     "pages": [
+        "pages/home/home",
         "pages/register/register",
+        "pages/register/signUp/signUp",
+        "pages/register/signIn/signIn",
         "pages/index/index",
         "pages/addFunction/addFunction",
-        "pages/deployFunctions/deployFunctions"
-        ],
+        "pages/deployFunctions/deployFunctions",
+        "pages/setting/setting"
+    ],
     "window": {
         "backgroundColor": "#07c160",
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#07c160",
-        "navigationBarTitleText": "热轧作业区信息采集系统",
+        "navigationBarTitleText": "热轧作业区职工信息采集系统",
         "navigationBarTextStyle": "white",
         "navigationStyle": "custom"
+    },
+    "tabBar": {
+        "color": "#2c2c2c",
+        "selectedColor": "#3cc51f",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "iconPath": "./images/home.png",
+                "selectedIconPath": "./images/home_selected.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/setting/setting",
+                "iconPath": "./images/setting.png",
+                "selectedIconPath": "./images/setting_selected.png",
+                "text": "设置"
+            }
+        ]
     },
     "sitemapLocation": "sitemap.json",
     "style": "v2"

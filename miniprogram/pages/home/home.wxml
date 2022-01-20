@@ -1,0 +1,4 @@
+<!--pages/home/home.wxml-->
+<mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
+</mp-navigation-bar>
+<text>pages/home/home.wxml</text>

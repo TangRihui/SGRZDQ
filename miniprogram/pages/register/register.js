@@ -1,9 +1,9 @@
 // miniprogram/pages/home/home.js
 const app = getApp()
-var pageStatus = 'unknown'
+const db = wx.cloud.database()
+const DBusers = db.collection("users")
 Page({
   data: {
-    pageStatus: pageStatus,
     navTitle: '注册/登录',
     back: false,
   },
@@ -12,20 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      pageStatus = 'unknown'
-    }
-    else {
-
-    }
-    console.log(pageStatus)
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
+    this.autoSignin()
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true,
@@ -36,13 +23,15 @@ Page({
   getUserProfile() {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      desc: '微信用户信息只用于登录', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
         this.setData({
+          nickName: res.userInfo.nickName,
           avatarUrl: res.userInfo.avatarUrl,
           userInfo: res.userInfo,
           hasUserInfo: true,
         })
+        console.log(this.data.nickName, this.data.avatarUrl, this.data.userInfo)
       }
     })
   },
@@ -64,18 +53,132 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
+        console.log('openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
+        wx.setStorageSync('openid', res.result.openid)
+        this.setData({
+          openid: res.result.openid
         })
+        // wx.navigateTo({
+        //   url: '../home/home',
+        // })
+
       },
       fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
+        console.error('云函数login调用失败', err)
+        wx.showModal({
+          title: '获取微信账号信息失败',
+          content: '请确认网络正常后再次登录',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              console.log('点击确认回调')
+            }
+          }
         })
       }
+    })
+  },
+  autoSignin: function () {
+    var that = this
+    that.onGetOpenid()
+    setTimeout(() => {
+      console.log(app.globalData.openid)
+      if (wx.getStorageSync('openid').length != 0) {
+        console.log(app.globalData.openid, wx.getStorageSync('openid'))
+        DBusers.where({
+          openid: wx.getStorageSync('openid')
+        })
+          .get()
+          .then(res => {
+            console.log(res.data.length)
+            if (res.data.length == 1) {
+              wx.navigateTo({
+                url: '../home/home',
+              })
+            }
+          })
+      }
+      else if (app.globalData.openid.length != 0) {
+        console.log(app.globalData.openid)
+        DBusers.where({
+          openid: app.globalData.openid
+        })
+          .get()
+          .then(res => {
+            console.log(res.data.length)
+            if (res.data.length == 1) {
+              wx.navigateTo({
+                url: '../home/home',
+              })
+            }
+          })
+      }
+    }, 500);
+  },
+  signUp: function () {
+    var that = this
+    that.onGetOpenid()
+    console.log()
+    wx.navigateTo({
+      url: './signUp/signUp',
+    })
+  },
+  signinOpenid: function () {
+    var that = this
+    that.onGetOpenid()
+    console.log()
+    if (wx.getStorageSync('openid').length == 0) {
+      wx.showModal({
+        title: '登录信息异常',
+        content: '请使用密码登录，或联系工作人员解决',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('未获取openid')
+          }
+        }
+      })
+    }
+    else {
+      DBusers.where({
+        openid: wx.getStorageSync('openid')
+      })
+        .get()
+        .then(res => {
+          console.log(res.data.length)
+          if (res.data.length == 1) {
+            wx.navigateTo({
+              url: '../home/home',
+            })
+          }
+          else if (res.data.length == 0) {
+            wx.navigateTo({
+              url: './signUp/signUp',
+            })
+          }
+          else {
+            wx.showModal({
+              title: '登录信息异常',
+              content: '请使用密码登录，或联系工作人员解决',
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  console.log('openid查询数据库异常')
+                }
+              }
+            })
+          }
+        })
+    }
+  },
+
+  signinPwd: function () {
+    var that = this
+    that.onGetOpenid()
+    console.log(wx.getStorageSync('openid'))
+    wx.navigateTo({
+      url: './signIn/signIn',
     })
   },
   /**

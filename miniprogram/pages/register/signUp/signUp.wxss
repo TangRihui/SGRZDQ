@@ -1,0 +1,43 @@
+/* pages/register/signUp/signUp.wxss */
+.center {
+    width: 100%;
+    text-align: center;
+}
+.form-container {
+    margin-top: -100rpx;
+    padding: 0 6% 0 6%;
+}
+.weui-cells__tips_warn {
+    color: red;
+}
+
+/* #name_alert {
+    margin-top: 20rpx;
+} */
+
+.top45 {
+    margin-top: 45rpx;
+}
+.bottom15 {
+    margin-bottom: 15rpx;
+    margin-top: 40rpx;
+}
+button {
+    margin: 100rpx 0 0 0;
+    padding: 10rpx 0 10rpx 0;
+}
+.title_center {
+    width: 100%;
+    text-align: center;
+}
+.title_container {
+    width: 90%;
+    padding: 40rpx 5% 50rpx 5%;
+}
+.title1 {
+    font-size: 50rpx;
+}
+.title2 {
+    font-size: 35rpx;
+    color: #555555;
+}

@@ -1,0 +1,35 @@
+<!--pages/register/signIn/signIn.wxml-->
+<mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
+</mp-navigation-bar>
+<mp-form-page>
+    <view class="form-container">
+        <view class="title_center">
+            <text class="title1 center">登录\n</text>
+        </view>
+        <view class="title_center">
+            <text class="title2">使用姓名、密码登录</text>
+        </view>
+        <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+        </mp-form>
+        <view class="weui-cells bottom15">
+            <label for="js_current_input" class="weui-cell weui-cell_active">
+                <view class="weui-cell__hd"><span class="weui-label">姓名</span></view>
+                <view class="weui-cell__bd weui-flex">
+                    <input id="name_input" class="weui-input" type="text" bindinput="bindNameInput" placeholder="请输入真实姓名" />
+                </view>
+            </label>
+        </view>
+        <view role="alert" id="name_alert" wx:if="{{nameAlert}}" class="weui-cells__tips weui-cells__tips_warn">后台数据中不存在该姓名</view>
+        <view class="weui-cells top45">
+            <label for="js_current_input" class="weui-cell weui-cell_active">
+                <view class="weui-cell__hd"><span class="weui-label">密码</span></view>
+                <view class="weui-cell__bd weui-flex">
+                    <input id="pwd_input" class="weui-input" password type="text" bindinput="bindPwdInput" placeholder="请输入密码" />
+                </view>
+            </label>
+        </view>
+        <view slot="button">
+            <button class="weui-btn" type="primary" bindtap="submitSignin">登录</button>
+        </view>
+    </view>
+</mp-form-page>
