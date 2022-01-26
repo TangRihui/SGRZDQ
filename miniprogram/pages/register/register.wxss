@@ -20,3 +20,7 @@ button {
 .wide_btn {
     width: 55% !important;
 }
+.weui-footer {
+    margin: 60rpx 0 15rpx 0;
+
+}

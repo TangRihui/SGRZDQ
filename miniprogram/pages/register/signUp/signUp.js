@@ -4,7 +4,7 @@ const db = wx.cloud.database()
 const DBusers = db.collection("users")
 Page({
   data: {
-    navTitle: '职工信息采集系统',
+    navTitle: '职工信息管理系统',
     back: true,
     nameAlert: false,
     inputName: '',

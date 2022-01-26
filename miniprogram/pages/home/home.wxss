@@ -1,1 +1,171 @@
 /* pages/home/home.wxss */
+
+page {
+  --footer-height: 10vh;
+  --button-size: 16vw;
+  --button-color: #353535;
+  --button-icon-size: 6vw;
+}
+
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+button {
+  background: initial;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button::after {
+  border: none;
+}
+
+.form-group {
+  width: calc(100% - 40px);
+  margin: 10px 20px;
+  border-radius: 10px;
+  background: white;
+}
+
+.form-group_label {
+  align-self: flex-start;
+  margin-left: 20px;
+  color: #8D8D8D;
+  font-size: 15px;
+}
+
+.form-group_label:not(:first-child) {
+  margin-top: 20px;
+}
+
+.form-cell {
+  padding: 30rpx 20rpx;
+}
+
+.form-cell:not(:last-child) {
+  border-bottom: rgba(0, 0, 0, 0.05) solid 1px;
+}
+
+.form-cell.inline {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form-cell_title {
+  margin-bottom: 10px;
+  font-size: medium;
+}
+
+.form-cell_title-placeholder {
+  font-size: 30rpx;
+  color: #8D8D8D;
+}
+
+.upload-text {
+  margin-left: auto;
+  opacity: 0.5;
+}
+
+.upload {
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+}
+
+.option {
+  margin-left: 15vw;
+}
+
+.selector {
+  width: 15px;
+  height: 15px;
+  margin-left: auto;
+}
+
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  z-index: 300;
+}
+
+.footer view {
+  width: 100%;
+  height: 100%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  text-align: center;
+}
+
+.save {
+  color: white;
+  background: #07c160;
+}
+
+.cell_title {
+  width: 28vw !important;
+  text-align: center;
+}
+
+.picker {
+  width: 35vw;
+}
+.form_container {
+  padding: 2vh 0 9vh 0;
+}
+textarea {
+  width: 44vw;
+  height: 7vh;
+}
+.weui-form {
+  padding-top: 11vh;
+}
+.first_btn {
+  padding-top: 11vh !important;
+}
+.btn_area {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 13vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+view {
+  text-align: center;
+}
+.logo-container {
+  text-align: center;
+  padding: 150rpx 0 160rpx 0;
+}
+.logo-container .title {
+  font-size: 55rpx;
+  padding-top: 30rpx;
+}
+.description {
+  font-size: 36rpx;
+}
+button {
+  margin: 60rpx 0 15rpx 0;
+  padding: 10rpx 0 10rpx 0;
+}
+.wide_btn {
+  width: 55% !important;
+}

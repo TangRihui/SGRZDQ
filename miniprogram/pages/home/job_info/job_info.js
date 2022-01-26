@@ -1,9 +1,17 @@
-// pages/setting/setting.js
+// pages/home/job_info/job_info.js
 Page({
+
+    /**
+     * 页面的初始数据
+     */
     data: {
-      navTitle: '职工信息管理系统',
-      back: false,
+        navTitle: '工作信息',
+        back: true,
+        name: 'name',
+        eid: 'eid',
+        group: 'group'
     },
+
     /**
      * 生命周期函数--监听页面加载
      */

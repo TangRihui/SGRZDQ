@@ -4,7 +4,7 @@ const db = wx.cloud.database()
 const DBusers = db.collection("users")
 Page({
   data: {
-    navTitle: '职工信息采集系统',
+    navTitle: '职工信息管理系统',
     back: true,
     nameAlert: false,
     inputName: '',
@@ -71,8 +71,17 @@ Page({
           this.setData({
             nameAlert: false
           })
+          console.log(this.data.openid)
           wx.switchTab({
             url: '../../home/home',
+            success: function(res) {
+              console.log("登录成功")
+              wx.showToast({
+                title: '登录成功',
+                icon: 'success',
+                duration: 1500
+              })
+            }
           })
         }
       })

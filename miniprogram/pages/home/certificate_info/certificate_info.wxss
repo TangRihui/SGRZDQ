@@ -1,0 +1,29 @@
+/* pages/home/certificate_info/certificate_info.wxss */
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    z-index: 300;
+  }
+  
+  .footer view {
+    width: 100%;
+    height: 100%;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    text-align: center;
+  }
+  
+  .save {
+    color: white;
+    background: #07c160;
+  }
+
+  .weui-form__tips {
+    padding-bottom: 3vh;
+  }
+  
+  .weui-form__tips-area {
+    margin-bottom: 8vh;
+  }

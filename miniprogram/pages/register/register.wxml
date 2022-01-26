@@ -1,12 +1,11 @@
 <!--pages/register/register.wxml-->
 <mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
 </mp-navigation-bar>
-
 <view class="signin">
     <view class="logo-container">
         <!-- <image src="../../image/nebula.png" class="logo"></image> -->
         <text class="title">热轧作业区</text>
-        <text class="title">\n职工信息采集系统</text>
+        <text class="title">\n职工信息管理系统</text>
     </view>
     <text class="description">点击下方按钮注册/登录</text>
     <view class="userinfo-nickname-wrapper">
@@ -18,4 +17,9 @@
         <button class="weui-btn weui-btn_default active-btn wide_btn" bindtap="signinOpenid"> 使用微信账号登录 </button>
     </view>
     <button class="weui-btn weui-btn_default active-btn wide_btn" bindtap="signinPwd"> 使用密码登录 </button>
+        <view class="weui-footer">
+            <view class="weui-footer__links">
+                <navigator url="./forgotPwd/forgotPwd" class="weui-footer__link">忘记密码？</navigator>
+            </view>
+    </view>
 </view>

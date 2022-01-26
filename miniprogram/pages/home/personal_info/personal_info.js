@@ -1,9 +1,34 @@
-// pages/setting/setting.js
+// pages/home/personal_info/personal_info.js
+const app = getApp()
+const db = wx.cloud.database()
+const DBusers = db.collection("users")
 Page({
     data: {
-      navTitle: '职工信息管理系统',
-      back: false,
-    },
+        navTitle: '个人信息',
+        back: true,
+        openid: app.globalData.openid,
+        // 保存编辑中待办的信息
+        title: '',
+        desc: '',
+        files: [],
+        fileName: '',
+        // 选择框变量
+        sexOptions: ['点击选择', '男', '女'],
+        sex: 0,
+        birthOptions: '',
+        birth: '',
+        age: '',
+        politicOptions: ['点击选择', '党员', '预备党员', '积极分子', '团员', '群众'],
+        politic: 0,
+        native: '',
+        dateOptions: '',
+        freqOptions: ['选择框', '女'],
+        freq: 0,
+        name: 'name',
+        eid: 'eid',
+        group: 'group'
+      },
+
     /**
      * 生命周期函数--监听页面加载
      */

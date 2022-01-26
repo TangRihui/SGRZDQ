@@ -18,6 +18,54 @@ Page({
         canIUseGetUserProfile: true,
       })
     }
+    // 将工号eid由number格式转换为6位string格式
+    wx.cloud.callFunction({
+      name: "getUsers",
+      success(res) {
+        var that = this
+        console.log("云函数获取数据成功！", res.result.data, res.result.data.length)
+        for(let i=0; i<res.result.data.length; i++){
+          var oldEid = res.result.data[i].eid
+          var newEid = res.result.data[i].eid
+          if(oldEid.toString().length == 1) {
+            newEid = '00000' + oldEid
+            that.updateEid()
+          }
+          else if(oldEid.toString().length == 2) {
+            newEid = '0000' + oldEid
+            that.updateEid()
+          }
+          else if(oldEid.toString().length == 3) {
+            newEid = '000' + oldEid
+            that.updateEid()
+          }
+          else if(oldEid.toString().length == 4) {
+            newEid = '00' + oldEid
+          }
+          else if(oldEid.toString().length == 5) {
+            newEid = '0' + oldEid
+          }
+          else if(oldEid.toString().length == 6) {
+            newEid = '' + oldEid
+          }
+          else {
+            console.log("转换错误")
+          }
+
+        }
+      },
+      fail(res) {
+        console.log("云函数获取数据失败！", res)
+      }
+    })
+  },
+  updateEid: function(e) {
+    DBusers.where({
+      eid: oldEid
+    })
+    .get(res=>{
+      console.log(res, 'a')
+    })
   },
 
   getUserProfile() {
@@ -53,7 +101,7 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        console.log('openid: ', res.result.openid)
+        console.log('云函数login调用成功，openid:', res.result.openid)
         app.globalData.openid = res.result.openid
         wx.setStorageSync('openid', res.result.openid)
         this.setData({
@@ -83,18 +131,23 @@ Page({
     var that = this
     that.onGetOpenid()
     setTimeout(() => {
-      console.log(app.globalData.openid)
       if (wx.getStorageSync('openid').length != 0) {
-        console.log(app.globalData.openid, wx.getStorageSync('openid'))
         DBusers.where({
           openid: wx.getStorageSync('openid')
         })
           .get()
           .then(res => {
-            console.log(res.data.length)
             if (res.data.length == 1) {
               wx.navigateTo({
                 url: '../home/home',
+                success: function (res) {
+                  console.log("登录成功")
+                  wx.showToast({
+                    title: '登录成功',
+                    icon: 'success',
+                    duration: 1500
+                  })
+                }
               })
             }
           })
@@ -110,6 +163,14 @@ Page({
             if (res.data.length == 1) {
               wx.navigateTo({
                 url: '../home/home',
+                success: function (res) {
+                  console.log("登录成功")
+                  wx.showToast({
+                    title: '登录成功',
+                    icon: 'success',
+                    duration: 1500
+                  })
+                }
               })
             }
           })

@@ -1,0 +1,150 @@
+<!--pages/home/personal_info/personal_info.wxml-->
+<mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
+</mp-navigation-bar>
+<page-meta root-font-size="system" />
+<view class="page" data-weui-theme="{{theme}}" data-weui-mode="{{mode}}">
+  <view class="weui-form">
+    <view class="weui-form__text-area">
+      <h2 class="weui-form__title">个人信息</h2>
+      <view class="weui-form__desc">用于职工信息填报，仅管理员可见。</view>
+    </view>
+    <view class="weui-form__control-area">
+      <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells__title">登录用户</view>
+        <view class="weui-cells">
+
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd"><label class="weui-label">姓名</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{name}}" />
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd">
+              <label class="weui-label">工号</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{eid}}" />
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd">
+              <label class="weui-label">班组</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{group}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+
+
+      <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells__title">基本信息</view>
+        <view class="weui-cells">
+          <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+            <view class="weui-cell__hd">
+              <label class="weui-label">性别</label>
+            </view>
+            <view class="weui-cell__bd">
+              <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
+                <view class="weui-select">{{sexOptions[sex]}}</view>
+              </picker>
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+            <view class="weui-cell__hd">
+              <label class="weui-label">出生日期</label>
+            </view>
+            <view class="weui-cell__bd">
+              <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{birthOptions}}">
+                <view class="weui-select">{{birthOptions[birth]}}</view>
+              </picker>
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd"><label class="weui-label">年龄</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{age}}" placeholder="填写年龄" placeholder-class="weui-input__placeholder" />
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd"><label class="weui-label">籍贯</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{native}}" placeholder="填写籍贯" placeholder-class="weui-input__placeholder" />
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__group weui-cells__group_form">
+        <view class="weui-cells__title">个人信息</view>
+        <view class="weui-cells">
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd"><label class="weui-label">现居地</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{add}}" placeholder="填写现居住地址" placeholder-class="weui-input__placeholder" />
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+            <view class="weui-cell__hd">
+              <label class="weui-label">政治面貌</label>
+            </view>
+            <view class="weui-cell__bd">
+              <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{politicOptions}}">
+                <view class="weui-select">{{politicOptions[politic]}}</view>
+              </picker>
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd">
+              <label class="weui-label">联系电话</label>
+              <view class="weui-cell__desc">仅用于信息填报</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{tel}}" placeholder="填写常用电话号码" type="number" placeholder-class="weui-input__placeholder" />
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd">
+              <label class="weui-label">身份证号</label>
+              <view class="weui-cell__desc">仅用于信息填报</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{id_no}}" placeholder="填写身份证号" type="number" placeholder-class="weui-input__placeholder" />
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__hd"><label class="weui-label">身份证地址</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="{{id_add}}" placeholder="填写身份证地址" placeholder-class="weui-input__placeholder" />
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+    <view class="weui-form__tips-area">
+      <view class="weui-form__tips">
+        以上信息用于职工信息填报，仅管理员可见。
+      </view>
+      <view class="weui-form__tips">
+        本小程序使用微信云开发服务，复用微信私有协议及链路，保证业务安全性。
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="save" bindtap="saveTodo">保存</view>
+  </view>
+</view>

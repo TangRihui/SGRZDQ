@@ -1,0 +1,154 @@
+<!--pages/home/job_info/job_info.wxml-->
+<mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
+</mp-navigation-bar>
+<page-meta root-font-size="system" />
+<view class="page" data-weui-theme="{{theme}}" data-weui-mode="{{mode}}">
+    <view class="weui-form">
+        <view class="weui-form__text-area">
+            <h2 class="weui-form__title">工作信息</h2>
+            <view class="weui-form__desc">用于职工信息填报，仅管理员可见。</view>
+        </view>
+        <view class="weui-form__control-area">
+            <view class="weui-cells__group weui-cells__group_form">
+                <view class="weui-cells__title">登录用户</view>
+                <view class="weui-cells">
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">姓名</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{name}}" />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">工号</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{eid}}" />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label" style="width: 50vw;">班组</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{group}}" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cells__group weui-cells__group_form">
+                <view class="weui-cells__title">工作信息</view>
+                <view class="weui-cells">
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">参加工作</label>
+                            <label class="weui-label">时间</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
+                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">到热轧厂</label>
+                            <label class="weui-label">时间</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{birthOptions}}">
+                                <view class="weui-select">{{birthOptions[birth]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">工种</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
+                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">岗位</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
+                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">HR岗位</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
+                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">岗位序列</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
+                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">岗次</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
+                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">第一职业</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{native}}" placeholder="填写第一职业" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-form__tips-area">
+      <view class="weui-form__tips">
+        以上信息用于职工信息填报，仅管理员可见。
+      </view>
+      <view class="weui-form__tips">
+        本小程序使用微信云开发服务，复用微信私有协议及链路，保证业务安全性。
+      </view>
+    </view>
+    <view class="footer">
+        <view class="save" bindtap="saveTodo">保存</view>
+    </view>
+</view>
+
+
+
+
+
+
+
+
