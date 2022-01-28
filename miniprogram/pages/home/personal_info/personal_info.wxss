@@ -15,7 +15,7 @@
     text-align: center;
   }
 
-  .save {
+  .submit {
     color: white;
     background: #07c160;
   }

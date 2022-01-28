@@ -8,64 +8,75 @@ Page({
     back: false,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  /* 生命周期函数--监听页面加载 */
   onLoad: function (options) {
-    this.autoSignin()
+    let that = this
+    that.autoSignin()
     if (wx.getUserProfile) {
-      this.setData({
+      that.setData({
         canIUseGetUserProfile: true,
       })
     }
     // 将工号eid由number格式转换为6位string格式
-    wx.cloud.callFunction({
-      name: "getUsers",
-      success(res) {
-        var that = this
-        console.log("云函数获取数据成功！", res.result.data, res.result.data.length)
-        for(let i=0; i<res.result.data.length; i++){
-          var oldEid = res.result.data[i].eid
-          var newEid = res.result.data[i].eid
-          if(oldEid.toString().length == 1) {
-            newEid = '00000' + oldEid
-            that.updateEid()
-          }
-          else if(oldEid.toString().length == 2) {
-            newEid = '0000' + oldEid
-            that.updateEid()
-          }
-          else if(oldEid.toString().length == 3) {
-            newEid = '000' + oldEid
-            that.updateEid()
-          }
-          else if(oldEid.toString().length == 4) {
-            newEid = '00' + oldEid
-          }
-          else if(oldEid.toString().length == 5) {
-            newEid = '0' + oldEid
-          }
-          else if(oldEid.toString().length == 6) {
-            newEid = '' + oldEid
-          }
-          else {
-            console.log("转换错误")
-          }
-
-        }
-      },
-      fail(res) {
-        console.log("云函数获取数据失败！", res)
-      }
-    })
+    // 重新导入数据库后运行该函数
+    // that.numToString()
   },
-  updateEid: function(e) {
-    DBusers.where({
-      eid: oldEid
+
+  async numToString() {
+    var that = this
+    // 获取数据库
+    var toString = await wx.cloud.callFunction({
+      name: "getUsers"
     })
-    .get(res=>{
-      console.log(res, 'a')
+    // 处理数据库返回值
+    that.setData({
+      users: toString.result.users.data
     })
+    var users = that.data.users
+    for (let i = 0; i < users.length; i++) {
+      var oldEid = users[i].eid
+      var newEid = users[i].eid
+      // 更改eid格式
+      if (oldEid.toString().length == 1) {
+        newEid = '00000' + oldEid
+        console.log(1, newEid)
+      }
+      else if (oldEid.toString().length == 2) {
+        newEid = '0000' + oldEid
+        console.log(2, newEid)
+      }
+      else if (oldEid.toString().length == 3) {
+        newEid = '000' + oldEid
+        console.log(3, newEid)
+      }
+      else if (oldEid.toString().length == 4) {
+        newEid = '00' + oldEid
+        console.log(4, newEid)
+      }
+      else if (oldEid.toString().length == 5) {
+        newEid = '0' + oldEid
+        console.log(5, newEid)
+      }
+      else if (oldEid.toString().length == 6) {
+        newEid = '' + oldEid
+        console.log(6, newEid)
+      }
+      else {
+        console.log("转换错误")
+      }
+      // 更改数据库
+      DBusers.where({
+        eid: oldEid
+      })
+        .update({
+          data: {
+            eid: newEid
+          },
+          success: function (res) {
+            console.log(res)
+          }
+        })
+    }
   },
 
   getUserProfile() {
@@ -138,6 +149,8 @@ Page({
           .get()
           .then(res => {
             if (res.data.length == 1) {
+              console.log(res.data.name)
+              app.globalData.name = res.data.name
               wx.navigateTo({
                 url: '../home/home',
                 success: function (res) {
@@ -161,6 +174,10 @@ Page({
           .then(res => {
             console.log(res.data.length)
             if (res.data.length == 1) {
+              console.log(res.data.name)
+              app.globalData.name = res.data.name
+              app.globalData.eid = res.data.eid
+              app.globalData.group = res.data.group
               wx.navigateTo({
                 url: '../home/home',
                 success: function (res) {
@@ -188,7 +205,6 @@ Page({
   signinOpenid: function () {
     var that = this
     that.onGetOpenid()
-    console.log()
     if (wx.getStorageSync('openid').length == 0) {
       wx.showModal({
         title: '登录信息异常',

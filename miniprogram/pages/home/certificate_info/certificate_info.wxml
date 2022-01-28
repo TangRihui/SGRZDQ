@@ -16,7 +16,7 @@
                     <view class="weui-cell weui-cell_active">
                         <view class="weui-cell__hd"><label class="weui-label">姓名</label></view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{name}}" />
+                            <input class="weui-input" value="{{name}}" bindinput="nameInput" disabled />
                         </view>
                     </view>
 
@@ -25,7 +25,7 @@
                             <label class="weui-label">工号</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{eid}}" />
+                            <input class="weui-input" value="{{eid}}" bindinput="eidInput" disabled />
                         </view>
                     </view>
 
@@ -34,7 +34,7 @@
                             <label class="weui-label">班组</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{group}}" />
+                            <input class="weui-input" value="{{group}}" bindinput="groupInput" disabled />
                         </view>
                     </view>
                 </view>
@@ -50,8 +50,8 @@
                             <label class="weui-label">鉴定等级</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
-                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            <picker aria-role="combobox" bindchange="cerlevelPickerChange" range="{{cer_levelOptions}}">
+                                <view class="weui-select">{{cer_levelOptions[cer_level]}}</view>
                             </picker>
                         </view>
                     </view>
@@ -59,7 +59,7 @@
                     <view class="weui-cell weui-cell_active">
                         <view class="weui-cell__hd"><label class="weui-label">证书编号</label></view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{age}}" placeholder="填写证书编号" placeholder-class="weui-input__placeholder" />
+                            <input class="weui-input" value="{{cer_id}}" placeholder="填写证书编号" bindinput="cer_idInput" placeholder-class="weui-input__placeholder" />
                         </view>
                     </view>
 
@@ -68,8 +68,8 @@
                             <label class="weui-label">发证日期</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{birthOptions}}">
-                                <view class="weui-select">{{birthOptions[birth]}}</view>
+                            <picker aria-role="combobox" bindchange="cerdatePickerChange" mode="date" start="1960-01-01" value="{{cer_date}}">
+                                <view class="weui-select">{{cer_date}}</view>
                             </picker>
                         </view>
                     </view>
@@ -77,7 +77,7 @@
                     <view class="weui-cell weui-cell_active">
                         <view class="weui-cell__hd"><label class="weui-label">发证机关</label></view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{age}}" placeholder="填写发证机关" placeholder-class="weui-input__placeholder" />
+                            <input class="weui-input" value="{{cer_org}}" placeholder="填写发证机关" bindinput="cer_orgInput" placeholder-class="weui-input__placeholder" />
                         </view>
                     </view>
                 </view>
@@ -87,14 +87,14 @@
                     <view class="weui-cell weui-cell_active">
                         <view class="weui-cell__hd"><label class="weui-label">毕业院校</label></view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{age}}" placeholder="填写毕业院校" placeholder-class="weui-input__placeholder" />
+                            <input class="weui-input" value="{{college}}" placeholder="填写毕业院校" bindinput="collegeInput" placeholder-class="weui-input__placeholder" />
                         </view>
                     </view>
 
                     <view class="weui-cell weui-cell_active">
                         <view class="weui-cell__hd"><label class="weui-label">专业</label></view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{age}}" placeholder="填写专业" placeholder-class="weui-input__placeholder" />
+                            <input class="weui-input" value="{{major}}" placeholder="填写专业" bindinput="majorInput" placeholder-class="weui-input__placeholder" />
                         </view>
                     </view>
 
@@ -103,9 +103,11 @@
                             <label class="weui-label">学历</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{birthOptions}}">
-                                <view class="weui-select">{{birthOptions[birth]}}</view>
-                            </picker>
+                            <view class="weui-cell__bd">
+                                <picker aria-role="combobox" bindchange="eduPickerChange" range="{{eduOptions}}">
+                                    <view class="weui-select">{{eduOptions[edu]}}</view>
+                                </picker>
+                            </view>
                         </view>
                     </view>
 
@@ -114,8 +116,8 @@
                             <label class="weui-label">学位</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{birthOptions}}">
-                                <view class="weui-select">{{birthOptions[birth]}}</view>
+                            <picker aria-role="combobox" bindchange="degreePickerChange" range="{{degreeOptions}}">
+                                <view class="weui-select">{{degreeOptions[degree]}}</view>
                             </picker>
                         </view>
                     </view>
@@ -129,8 +131,8 @@
                             <label class="weui-label">职称</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{birthOptions}}">
-                                <view class="weui-select">{{birthOptions[birth]}}</view>
+                            <picker aria-role="combobox" bindchange="post_titlePickerChange" range="{{post_titleOptions}}">
+                                <view class="weui-select">{{post_titleOptions[post_title]}}</view>
                             </picker>
                         </view>
                     </view>
@@ -138,16 +140,12 @@
                     <view class="weui-cell weui-cell_active">
                         <view class="weui-cell__hd"><label class="weui-label">证书号</label></view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{native}}" placeholder="填写证书号" placeholder-class="weui-input__placeholder" />
+                            <input class="weui-input" value="{{post_id}}" placeholder="填写证书号" bindinput="postidInput" placeholder-class="weui-input__placeholder" />
                         </view>
                     </view>
                 </view>
             </view>
-
         </view>
-
-
-
 
 
         <view class="weui-form__tips-area">
@@ -160,7 +158,7 @@
         </view>
 
         <view class="footer">
-            <view class="save" bindtap="saveTodo">保存</view>
+            <view class="submit" bindtap="submitCertificate">保存</view>
         </view>
     </view>
 </view>

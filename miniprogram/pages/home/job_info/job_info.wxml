@@ -16,7 +16,7 @@
                     <view class="weui-cell weui-cell_active">
                         <view class="weui-cell__hd"><label class="weui-label">姓名</label></view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{name}}" />
+                            <input class="weui-input" value="{{name}}" bindinput="nameInput" disabled />
                         </view>
                     </view>
 
@@ -25,16 +25,16 @@
                             <label class="weui-label">工号</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{eid}}" />
+                            <input class="weui-input" value="{{eid}}" bindinput="eidInput" disabled />
                         </view>
                     </view>
 
                     <view class="weui-cell weui-cell_active">
                         <view class="weui-cell__hd">
-                            <label class="weui-label" style="width: 50vw;">班组</label>
+                            <label class="weui-label">班组</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{group}}" />
+                            <input class="weui-input" value="{{group}}" bindinput="groupInput" disabled />
                         </view>
                     </view>
                 </view>
@@ -49,8 +49,8 @@
                             <label class="weui-label">时间</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
-                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            <picker aria-role="combobox" bindchange="workdatePickerChange" mode="date" start="1950-01-01" value="{{work_date}}">
+                                <view class="weui-select">{{work_date}}</view>
                             </picker>
                         </view>
                     </view>
@@ -61,8 +61,8 @@
                             <label class="weui-label">时间</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{birthOptions}}">
-                                <view class="weui-select">{{birthOptions[birth]}}</view>
+                            <picker aria-role="combobox" bindchange="arrdatePickerChange" mode="date" start="1950-01-01" value="{{arr_date}}">
+                                <view class="weui-select">{{arr_date}}</view>
                             </picker>
                         </view>
                     </view>
@@ -72,8 +72,8 @@
                             <label class="weui-label">工种</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
-                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            <picker aria-role="combobox" bindchange="worktypePickerChange" range="{{work_typeOptions}}">
+                                <view class="weui-select">{{work_typeOptions[work_type]}}</view>
                             </picker>
                         </view>
                     </view>
@@ -83,8 +83,8 @@
                             <label class="weui-label">岗位</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
-                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            <picker aria-role="combobox" bindchange="postPickerChange" range="{{postOptions}}">
+                                <view class="weui-select">{{postOptions[post]}}</view>
                             </picker>
                         </view>
                     </view>
@@ -94,8 +94,8 @@
                             <label class="weui-label">HR岗位</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
-                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            <picker aria-role="combobox" bindchange="posthrPickerChange" range="{{post_hrOptions}}">
+                                <view class="weui-select">{{post_hrOptions[post_hr]}}</view>
                             </picker>
                         </view>
                     </view>
@@ -105,8 +105,8 @@
                             <label class="weui-label">岗位序列</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
-                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            <picker aria-role="combobox" bindchange="postnoPickerChange" range="{{post_noOptions}}">
+                                <view class="weui-select">{{post_noOptions[post_no]}}</view>
                             </picker>
                         </view>
                     </view>
@@ -116,8 +116,8 @@
                             <label class="weui-label">岗次</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
-                                <view class="weui-select">{{sexOptions[sex]}}</view>
+                            <picker aria-role="combobox" bindchange="postlevelPickerChange" range="{{post_levelOptions}}">
+                                <view class="weui-select">{{post_levelOptions[post_level]}}</view>
                             </picker>
                         </view>
                     </view>
@@ -125,7 +125,7 @@
                     <view class="weui-cell weui-cell_active">
                         <view class="weui-cell__hd"><label class="weui-label">第一职业</label></view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{native}}" placeholder="填写第一职业" placeholder-class="weui-input__placeholder" />
+                            <input class="weui-input" value="{{first_work}}" placeholder="填写第一职业" bindinput="firstworkInput" placeholder-class="weui-input__placeholder" />
                         </view>
                     </view>
                 </view>
@@ -133,22 +133,14 @@
         </view>
     </view>
     <view class="weui-form__tips-area">
-      <view class="weui-form__tips">
-        以上信息用于职工信息填报，仅管理员可见。
-      </view>
-      <view class="weui-form__tips">
-        本小程序使用微信云开发服务，复用微信私有协议及链路，保证业务安全性。
-      </view>
+        <view class="weui-form__tips">
+            以上信息用于职工信息填报，仅管理员可见。
+        </view>
+        <view class="weui-form__tips">
+            本小程序使用微信云开发服务，复用微信私有协议及链路，保证业务安全性。
+        </view>
     </view>
     <view class="footer">
-        <view class="save" bindtap="saveTodo">保存</view>
+        <view class="submit" bindtap="submitJob">保存</view>
     </view>
 </view>
-
-
-
-
-
-
-
-

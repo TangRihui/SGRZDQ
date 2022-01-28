@@ -25,10 +25,12 @@
             <label for="js_current_input" class="weui-cell weui-cell_active">
                 <view class="weui-cell__hd"><span class="weui-label">工号</span></view>
                 <view class="weui-cell__bd weui-flex">
-                    <input id="pwd_input" class="weui-input" password type="text" bindinput="bindPwdInput" placeholder="填写6位工号" />
+                    <input id="pwd_input" class="weui-input" type="text" bindinput="bindEidInput" placeholder="填写6位工号" maxlength="6"/>
                 </view>
             </label>
         </view>
+        <view role="alert" id="name_alert" wx:if="{{eidAlert1}}" class="weui-cells__tips weui-cells__tips_warn">工号为6位数字</view>
+        <view role="alert" id="name_alert" wx:if="{{eidAlert2}}" class="weui-cells__tips weui-cells__tips_warn">姓名与工号不匹配</view>
         <view class="weui-cells top45">
             <label for="js_current_input" class="weui-cell weui-cell_active">
                 <view class="weui-cell__hd"><span class="weui-label">密码</span></view>
@@ -37,6 +39,17 @@
                 </view>
             </label>
         </view>
+        <view role="alert" id="name_alert" wx:if="{{pwdAlert1}}" class="weui-cells__tips weui-cells__tips_warn">登录密码至少为4位</view>
+        <view class="weui-cells top45">
+            <label for="js_current_input" class="weui-cell weui-cell_active">
+                <view class="weui-cell__hd"><span class="weui-label">确认密码</span></view>
+                <view class="weui-cell__bd weui-flex">
+                    <input id="pwd_input" class="weui-input" password type="text" bindinput="bindPwdInput" placeholder="再次输入登录密码" />
+                </view>
+            </label>
+        </view>
+        <view role="alert" id="name_alert" wx:if="{{pwdAlert2}}" class="weui-cells__tips weui-cells__tips_warn">密码与确认密码需一致</view>
+
         <view slot="button">
             <button class="weui-btn" type="primary" bindtap="submitSignup">注册</button>
         </view>

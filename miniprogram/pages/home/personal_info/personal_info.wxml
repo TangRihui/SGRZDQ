@@ -16,7 +16,7 @@
           <view class="weui-cell weui-cell_active">
             <view class="weui-cell__hd"><label class="weui-label">姓名</label></view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{name}}" />
+              <input class="weui-input" value="{{name}}" bindinput="nameInput" disabled />
             </view>
           </view>
 
@@ -25,7 +25,7 @@
               <label class="weui-label">工号</label>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{eid}}" />
+              <input class="weui-input" value="{{eid}}" bindinput="eidInput" disabled />
             </view>
           </view>
 
@@ -34,12 +34,11 @@
               <label class="weui-label">班组</label>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{group}}" />
+              <input class="weui-input" value="{{group}}" bindinput="groupInput" disabled />
             </view>
           </view>
         </view>
       </view>
-
 
 
 
@@ -51,7 +50,7 @@
               <label class="weui-label">性别</label>
             </view>
             <view class="weui-cell__bd">
-              <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{sexOptions}}">
+              <picker aria-role="combobox" bindchange="sexPickerChange" range="{{sexOptions}}">
                 <view class="weui-select">{{sexOptions[sex]}}</view>
               </picker>
             </view>
@@ -62,8 +61,8 @@
               <label class="weui-label">出生日期</label>
             </view>
             <view class="weui-cell__bd">
-              <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{birthOptions}}">
-                <view class="weui-select">{{birthOptions[birth]}}</view>
+              <picker aria-role="combobox" bindchange="birthPickerChange" mode="date" start="1950-01-01" end="2005-01-01" value="{{birth}}">
+                <view class="weui-select">{{birth}}</view>
               </picker>
             </view>
           </view>
@@ -71,14 +70,14 @@
           <view class="weui-cell weui-cell_active">
             <view class="weui-cell__hd"><label class="weui-label">年龄</label></view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{age}}" placeholder="填写年龄" placeholder-class="weui-input__placeholder" />
+              <input class="weui-input" value="{{age}}" placeholder="填写年龄" bindinput="ageInput" maxlength="2" placeholder-class="weui-input__placeholder" />
             </view>
           </view>
 
           <view class="weui-cell weui-cell_active">
             <view class="weui-cell__hd"><label class="weui-label">籍贯</label></view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{native}}" placeholder="填写籍贯" placeholder-class="weui-input__placeholder" />
+              <input class="weui-input" value="{{native}}" placeholder="填写籍贯" bindinput="nativeInput" placeholder-class="weui-input__placeholder" />
             </view>
           </view>
         </view>
@@ -88,9 +87,11 @@
         <view class="weui-cells__title">个人信息</view>
         <view class="weui-cells">
           <view class="weui-cell weui-cell_active">
-            <view class="weui-cell__hd"><label class="weui-label">现居地</label></view>
+            <view class="weui-cell__hd"><label class="weui-label">现居地</label>
+              <view class="weui-cell__desc">仅用于信息填报</view>
+            </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{add}}" placeholder="填写现居住地址" placeholder-class="weui-input__placeholder" />
+              <input class="weui-input" value="{{add}}" placeholder="填写现居住地址" bindinput="addInput" placeholder-class="weui-input__placeholder" />
             </view>
           </view>
 
@@ -99,7 +100,7 @@
               <label class="weui-label">政治面貌</label>
             </view>
             <view class="weui-cell__bd">
-              <picker aria-role="combobox" bindchange="bindPicker3Change" range="{{politicOptions}}">
+              <picker aria-role="combobox" bindchange="politicPickerChange" range="{{politicOptions}}">
                 <view class="weui-select">{{politicOptions[politic]}}</view>
               </picker>
             </view>
@@ -111,7 +112,7 @@
               <view class="weui-cell__desc">仅用于信息填报</view>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{tel}}" placeholder="填写常用电话号码" type="number" placeholder-class="weui-input__placeholder" />
+              <input class="weui-input" value="{{tel}}" placeholder="填写常用电话号码" bindinput="telInput" type="number" placeholder-class="weui-input__placeholder" />
             </view>
           </view>
 
@@ -121,14 +122,16 @@
               <view class="weui-cell__desc">仅用于信息填报</view>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{id_no}}" placeholder="填写身份证号" type="number" placeholder-class="weui-input__placeholder" />
+              <input class="weui-input" value="{{id_no}}" placeholder="填写身份证号" bindinput="idnoInput" type="number" placeholder-class="weui-input__placeholder" />
             </view>
           </view>
 
           <view class="weui-cell weui-cell_active">
-            <view class="weui-cell__hd"><label class="weui-label">身份证地址</label></view>
+            <view class="weui-cell__hd"><label class="weui-label">身份证地址</label>
+              <view class="weui-cell__desc">仅用于信息填报</view>
+            </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{id_add}}" placeholder="填写身份证地址" placeholder-class="weui-input__placeholder" />
+              <input class="weui-input" value="{{id_add}}" placeholder="填写身份证地址" bindinput="idaddInput" placeholder-class="weui-input__placeholder" />
             </view>
           </view>
 
@@ -145,6 +148,6 @@
     </view>
   </view>
   <view class="footer">
-    <view class="save" bindtap="saveTodo">保存</view>
+    <view class="submit" bindtap="submitPersonal">保存</view>
   </view>
 </view>

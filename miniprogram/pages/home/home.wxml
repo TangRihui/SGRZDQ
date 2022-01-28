@@ -9,7 +9,7 @@
         <text class="title">\n职工信息管理系统</text>
     </view>
     <text class="description">用于职工信息填报，仅管理员可见。</text>
-    <button class="weui-btn weui-btn_default active-btn wide_btn" bindtap="signinPwd"> 填写个人信息 </button>
-    <button class="weui-btn weui-btn_default active-btn wide_btn" bindtap="signinPwd"> 填写工作信息 </button>
-    <button class="weui-btn weui-btn_default active-btn wide_btn" bindtap="signinPwd"> 填写证书信息 </button>
+    <button class="weui-btn weui-btn_primary wide_btn" bindtap="personal_info"> 填写个人信息 </button>
+    <button class="weui-btn weui-btn_primary wide_btn" bindtap="job_info"> 填写工作信息 </button>
+    <button class="weui-btn weui-btn_primary wide_btn" bindtap="certificate_info"> 填写证书信息 </button>
 </view>
