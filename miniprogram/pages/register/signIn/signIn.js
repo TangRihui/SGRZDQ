@@ -58,7 +58,7 @@ Page({
         if (res.data.length == 0) {
           wx.showModal({
             title: '登录失败',
-            content: '请确认用户名、密码后重新登录',
+            content: '请确认姓名、密码后再次登录',
             showCancel: false,
             success: function (res) {
               if (res.confirm) {
@@ -81,6 +81,18 @@ Page({
                 icon: 'success',
                 duration: 1500
               })
+            }
+          })
+        }
+        else {
+          wx.showModal({
+            title: '登录失败',
+            content: '请确认网络正常后再次登录，或联系管理员',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('登录失败提示，系统错误（网络？）')
+              }
             }
           })
         }

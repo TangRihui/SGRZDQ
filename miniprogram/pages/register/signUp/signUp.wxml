@@ -44,7 +44,7 @@
             <label for="js_current_input" class="weui-cell weui-cell_active">
                 <view class="weui-cell__hd"><span class="weui-label">确认密码</span></view>
                 <view class="weui-cell__bd weui-flex">
-                    <input id="pwd_input" class="weui-input" password type="text" bindinput="bindPwdInput" placeholder="再次输入登录密码" />
+                    <input id="pwd_input" class="weui-input" password type="text" bindinput="bindPwdCheck" placeholder="再次输入登录密码" />
                 </view>
             </label>
         </view>
