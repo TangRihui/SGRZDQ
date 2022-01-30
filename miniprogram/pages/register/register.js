@@ -118,7 +118,7 @@ Page({
         this.setData({
           openid: res.result.openid
         })
-        // wx.navigateTo({
+        // wx.switchTab({
         //   url: '../home/home',
         // })
 
@@ -151,7 +151,7 @@ Page({
             if (res.data.length == 1) {
               console.log(res.data.name)
               app.globalData.name = res.data.name
-              wx.navigateTo({
+              wx.switchTab({
                 url: '../home/home',
                 success: function (res) {
                   console.log("登录成功")
@@ -178,7 +178,7 @@ Page({
               app.globalData.name = res.data.name
               app.globalData.eid = res.data.eid
               app.globalData.group = res.data.group
-              wx.navigateTo({
+              wx.switchTab({
                 url: '../home/home',
                 success: function (res) {
                   console.log("登录成功")
@@ -225,8 +225,16 @@ Page({
         .then(res => {
           console.log(res.data.length)
           if (res.data.length == 1) {
-            wx.navigateTo({
+            wx.switchTab({
               url: '../home/home',
+              success: function (res) {
+                console.log("登录成功")
+                wx.showToast({
+                  title: '登录成功',
+                  icon: 'success',
+                  duration: 1500
+                })
+              }
             })
           }
           else if (res.data.length == 0) {

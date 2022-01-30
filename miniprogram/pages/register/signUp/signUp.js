@@ -28,43 +28,51 @@ Page({
     }
     else {
       console.log(that.data.inputName, that.data.inputEid)
-      DBusers.where({
-        name: that.data.inputName
-      })
-        .get()
-        .then(res => {
-          if (res.data.length == 1) {
-            that.setData({
-              nameAlert: false
-            })
-            DBusers.where({
-              name: that.data.inputName,
-              eid: that.data.inputEid
-            })
-              .get()
-              .then(res => {
-                if (res.data.length == 1) {
-                  that.setData({
-                    nameAlert: false,
-                    eidAlert1: false,
-                    eidAlert2: false
-                  })
-                }
-                else {
-                  that.setData({
-                    eidAlert2: true
-                  })
-                }
-              })
-          }
-          else {
-            that.setData({
-              nameAlert: true
-            })
-          }
+      if (that.data.inputEid.length == 6) {
+        DBusers.where({
+          name: that.data.inputName
         })
-
-
+          .get()
+          .then(res => {
+            if (res.data.length == 1) {
+              that.setData({
+                nameAlert: false
+              })
+              DBusers.where({
+                name: that.data.inputName,
+                eid: that.data.inputEid
+              })
+                .get()
+                .then(res => {
+                  if (res.data.length == 1) {
+                    that.setData({
+                      nameAlert: false,
+                      eidAlert1: false,
+                      eidAlert2: false
+                    })
+                  }
+                  else {
+                    that.setData({
+                      eidAlert2: true
+                    })
+                  }
+                })
+            }
+            else {
+              if (that.data.inputEid.length == 6) {
+                that.setData({
+                  nameAlert: true,
+                  eidAlert2: true
+                })
+              }
+              else {
+                that.setData({
+                  nameAlert: true
+                })
+              }
+            }
+          })
+      }
 
     }
     console.log("name:" + that.data.inputName, "eid:" + that.data.inputEid, "pwd:" + that.data.inputPwd, "pwdCheck:" + that.data.inputPwdCheck)
@@ -328,7 +336,7 @@ Page({
       }
     }
     else {
-      console.log("表单判断完成，提交表单")
+      console.log("表单初次判断完成")
       DBusers.where({
         name: inputName,
         eid: inputEid
@@ -336,6 +344,9 @@ Page({
         .get()
         .then(res => {
           console.log(res.data.length, res.data[0])
+          that.setData({
+            docId: res.data[0]._id
+          })
           if (res.data.length == 0) {
             wx.showModal({
               title: '姓名与工号不匹配',
@@ -349,17 +360,54 @@ Page({
             })
           }
           else if (res.data.length == 1) {
-            DBusers.where({
-              name: inputName,
-              eid: inputEid
-            })
-              .get()
-              .then(res => {
-                console.log(res)
+            if (that.data.inputPwd.length >= 4 && that.data.inputPwdCheck.length >= 4) {
+              if (that.data.inputPwd == that.data.inputPwdCheck) {
+                DBusers.doc(that.data.docId)
+                  .update({
+                    data: {
+                      pwd: that.data.inputPwd,
+                      openid: app.globalData.openid
+                    }
+                  })
+                  .then(res => {
+                    console.log(res)
+                  })
+                wx.switchTab({
+                  url: '../../home/home',
+                  success: function (res) {
+                    wx.showToast({
+                      title: '注册成功',
+                      icon: 'success',
+                      duration: 1500
+                    })
+                  }
+                })
+              }
+              else {
+                wx.showModal({
+                  title: '两次输入密码不同',
+                  content: '请确认密码后再次注册',
+                  showCancel: false,
+                  success: function (res) {
+                    if (res.confirm) {
+                      console.log('注册失败提示，两次输入密码不同')
+                    }
+                  }
+                })
+              }
+            }
+            else {
+              wx.showModal({
+                title: '密码至少为4位',
+                content: '请确认密码后再次注册',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    console.log('注册失败提示，密码至少为4位')
+                  }
+                }
               })
-            wx.switchTab({
-              url: '../../home/home',
-            })
+            }
           }
           else {
             wx.showModal({
