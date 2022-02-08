@@ -38,6 +38,6 @@ button {
     font-size: 50rpx;
 }
 .title2 {
-    font-size: 35rpx;
+    font-size: 33rpx;
     color: #555555;
 }

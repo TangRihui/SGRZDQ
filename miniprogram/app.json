@@ -11,7 +11,8 @@
         "pages/home/personal_info/personal_info",
         "pages/home/job_info/job_info",
         "pages/home/certificate_info/certificate_info",
-        "pages/register/forgotPwd/forgotPwd"
+        "pages/register/forgotPwd/forgotPwd",
+        "pages/home/show_info/show_info"
     ],
     "window": {
         "backgroundColor": "#07c160",

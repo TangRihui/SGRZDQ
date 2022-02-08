@@ -1,0 +1,3 @@
+<!--pages/home/show_info/show_info.wxml-->
+<mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
+</mp-navigation-bar>

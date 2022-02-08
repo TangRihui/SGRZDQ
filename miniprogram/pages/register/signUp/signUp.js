@@ -28,7 +28,25 @@ Page({
     }
     else {
       console.log(that.data.inputName, that.data.inputEid)
-      if (that.data.inputEid.length == 6) {
+      if (that.data.inputEid.length == 0) {
+        DBusers.where({
+          name: that.data.inputName
+        })
+          .get()
+          .then(res => {
+            if (res.data.length == 0) {
+              that.setData({
+                nameAlert: true
+              })
+            }
+            else if (res.data.length == 1) {
+              that.setData({
+                nameAlert: false
+              })
+            }
+          })
+      }
+      else if (that.data.inputEid.length == 6) {
         DBusers.where({
           name: that.data.inputName
         })
@@ -73,7 +91,8 @@ Page({
             }
           })
       }
-
+      else if (that.data.inputEid.length == 6) {
+      }
     }
     console.log("name:" + that.data.inputName, "eid:" + that.data.inputEid, "pwd:" + that.data.inputPwd, "pwdCheck:" + that.data.inputPwdCheck)
   },
@@ -371,6 +390,9 @@ Page({
                   })
                   .then(res => {
                     console.log(res)
+                    app.globalData.name = res.data[0].name
+                    app.globalData.eid = res.data[0].eid
+                    app.globalData.group = res.data[0].group
                   })
                 wx.switchTab({
                   url: '../../home/home',

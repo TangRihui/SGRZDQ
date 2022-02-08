@@ -7,11 +7,7 @@ Page({
     navTitle: '职工信息管理系统',
     back: false,
     openid: app.globalData.openid,
-    // 保存编辑中待办的信息
-    title: '',
-    desc: '',
-    files: [],
-    fileName: '',
+    type: 0
   },
 
   personal_info: function(e) {
@@ -127,18 +123,6 @@ Page({
     })
   },
 
-  // 重置所有表单项
-  resetTodo() {
-    this.setData({
-      title: '',
-      desc: '',
-      files: [],
-      fileName: '',
-      freqOptions: ['未完成', '已完成'],
-      freq: 0
-    })
-  },
-
 
   /* 生命周期函数--监听页面加载 */
   onLoad: function (options) {
@@ -152,6 +136,9 @@ Page({
         .get()
         .then(res => {
           console.log(res)
+          app.globalData.name = res.data[0].name
+          app.globalData.eid = res.data[0].eid
+          app.globalData.group = res.data[0].group
         })
     }
     else if (app.globalData.openid.length == 0) {
