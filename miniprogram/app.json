@@ -1,6 +1,8 @@
 {
     "pages": [
+
         "pages/register/register",
+        "pages/setting/QnA/QnA",
         "pages/register/signUp/signUp",
         "pages/home/home",
         "pages/register/signIn/signIn",
@@ -12,9 +14,8 @@
         "pages/home/job_info/job_info",
         "pages/home/certificate_info/certificate_info",
         "pages/register/forgotPwd/forgotPwd",
-        "pages/home/show_info/show_info",
-        "pages/setting/QnA/QnA"
-    ],
+        "pages/home/show_info/show_info"
+        ],
     "window": {
         "backgroundColor": "#07c160",
         "backgroundTextStyle": "light",

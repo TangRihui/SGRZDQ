@@ -79,6 +79,9 @@ Page({
           }
         })
     }
+    setTimeout(() => {
+      console.log('格式转换完成')
+    }, 1000);
   },
 
   getUserProfile() {
@@ -164,7 +167,7 @@ Page({
                     wx.showToast({
                       title: '登录成功',
                       icon: 'success',
-                      duration: 1500
+                      duration: 2000
                     })
                   }
                 })
@@ -191,7 +194,7 @@ Page({
                     wx.showToast({
                       title: '登录成功',
                       icon: 'success',
-                      duration: 1500
+                      duration: 2000
                     })
                   }
                 })
@@ -209,7 +212,7 @@ Page({
       icon: 'loading'
     })
     setTimeout(() => {
-      console.log(wx.getStorageSync('openid').length)
+      // console.log(wx.getStorageSync('openid').length)
       if (wx.getStorageSync('openid').length == 0) {
         wx.navigateTo({
           url: './signUp/signUp',
@@ -218,7 +221,7 @@ Page({
       else {
         that.signinOpenid()
       }
-    }, 500);
+    }, 750);
   },
   signinOpenid: function () {
     var that = this
@@ -246,7 +249,7 @@ Page({
         })
           .get()
           .then(res => {
-            console.log(res.data.length)
+            // console.log(res.data.length)
             if (res.data.length == 1) {
               wx.switchTab({
                 url: '../home/home',
@@ -255,7 +258,7 @@ Page({
                   wx.showToast({
                     title: '登录成功',
                     icon: 'success',
-                    duration: 1500
+                    duration: 2000
                   })
                 }
               })
@@ -279,7 +282,7 @@ Page({
             }
           })
       }
-    }, 500);
+    }, 750);
 
   },
 

@@ -7,7 +7,7 @@ Page({
     navTitle: '职工信息管理系统',
     back: false,
     openid: app.globalData.openid,
-    type: 1
+    type: 0
   },
 
   personal_info: function (e) {
@@ -139,6 +139,8 @@ Page({
           app.globalData.name = res.data[0].name
           app.globalData.eid = res.data[0].eid
           app.globalData.group = res.data[0].group
+          app.globalData.type = res.data[0].type
+
         })
     }
     else if (app.globalData.openid.length == 0) {

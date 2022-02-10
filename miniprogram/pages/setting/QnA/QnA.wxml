@@ -1,2 +1,27 @@
 <!--pages/setting/QnA/QnA.wxml-->
-<text>pages/setting/QnA/QnA.wxml</text>
+<mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
+</mp-navigation-bar>
+<view class="page">
+  <view class="page__bd" >
+    <wux-accordion-group title="注册/登录" accordion>
+      <view wx:for="{{signs}}" wx:key="index">
+        <wux-accordion title="{{item.title}}">{{item.content}}</wux-accordion>
+      </view>
+    </wux-accordion-group>
+    <wux-accordion-group title="信息填写" accordion>
+      <view wx:for="{{infos}}" wx:key="index">
+        <wux-accordion title="{{item.title}}">{{item.content}}</wux-accordion>
+      </view>
+    </wux-accordion-group>
+    <wux-accordion-group title="管理员" accordion wx:if="{{type!=0}}">
+      <view wx:for="{{admins}}" wx:key="index">
+        <wux-accordion title="{{item.title}}">{{item.content}}</wux-accordion>
+      </view>
+    </wux-accordion-group>
+    <wux-accordion-group title="小程序运行异常" accordion>
+      <view wx:for="{{errors}}" wx:key="index">
+        <wux-accordion title="{{item.title}}">{{item.content}}</wux-accordion>
+      </view>
+    </wux-accordion-group>
+  </view>
+</view>

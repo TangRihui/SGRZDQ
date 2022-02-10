@@ -22,5 +22,8 @@ button {
 }
 .weui-footer {
     margin: 60rpx 0 15rpx 0;
-
+}
+.weui-footer__links {
+    text-align: center;
+    padding: 10rpx 20rpx 10rpx 20rpx;
 }

@@ -6,6 +6,7 @@ Page({
     data: {
         navTitle: '忘记密码',
         back: true,
+        openid: app.globalData.openid,
     },
 
     /* 生命周期函数--监听页面加载 */

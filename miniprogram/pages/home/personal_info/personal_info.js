@@ -113,9 +113,9 @@ Page({
           success: function (res) {
             console.log("个人信息更新成功")
             wx.showToast({
-              title: '个人信息保存成功',
+              title: '保存成功',
               icon: 'success',
-              duration: 1500
+              duration: 2000
             })
           },
           fail: function (res) {

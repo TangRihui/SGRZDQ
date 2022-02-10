@@ -6,7 +6,8 @@
     <view class="weui-form">
         <view class="weui-form__text-area">
             <h2 class="weui-form__title">工作信息</h2>
-            <view class="weui-form__desc">用于职工信息填报，仅管理员可见。</view>
+            <view class="weui-form__desc title1">用于职工信息填报，仅指定管理员可见。</view>
+            <view class="weui-form__desc title2">\n退出页面前点击屏幕下方「保存」按钮。</view>
         </view>
         <view class="weui-form__control-area">
             <view class="weui-cells__group weui-cells__group_form">
@@ -136,7 +137,7 @@
     </view>
     <view class="weui-form__tips-area">
         <view class="weui-form__tips">
-            以上信息用于职工信息填报，仅管理员可见。
+            以上信息用于职工信息填报，仅指定管理员可见。
         </view>
         <view class="weui-form__tips">
             本小程序使用微信云开发服务，复用微信私有协议及链路，保证业务安全性。

@@ -8,7 +8,8 @@ Page({
     back: false,
     name: '未登录',
     eid: '信息加载失败',
-    group: '请重新进入小程序'
+    group: '请重新进入小程序',
+    types: ['用户', '小班组管理员', '大班组管理员', '系统管理员']
   },
   log_out: function(e) {
     wx.clearStorage()
@@ -30,6 +31,7 @@ Page({
   },
   /* 生命周期函数--监听页面加载 */
   onLoad: function (options) {
+    console.log(app.globalData.name)
     this.setData({
       name: app.globalData.name,
       eid: app.globalData.eid,

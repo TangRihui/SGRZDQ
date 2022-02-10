@@ -27,3 +27,29 @@
 .weui-form__tips-area {
   padding-bottom: 8vh;
 }
+
+.weui-form__desc {
+  margin: 0;
+  font-size: 33rpx;
+}
+
+.title1 {
+  margin-top: 33rpx;
+}
+
+.title2 {
+  margin-top: 10rpx;
+}
+
+.weui-form__control-area {
+  margin: 66rpx 0 44rpx 0;
+}
+
+.weui-form__tips {
+  margin: 0 0 22rpx 0;
+  padding: 0;
+}
+
+.weui-form__tips-area {
+  margin-bottom: 22rpx;
+}

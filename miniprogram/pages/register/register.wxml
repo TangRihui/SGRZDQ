@@ -17,6 +17,9 @@
     <button class="weui-btn weui-btn_default active-btn wide_btn" bindtap="signinPwd"> 使用密码登录 </button>
     <view class="weui-footer">
         <view class="weui-footer__links">
+            <navigator url="../setting/QnA/QnA" class="weui-footer__link"><text space="ensp">常见问题   </text></navigator>
+        </view>
+        <view class="weui-footer__links">
             <navigator url="./forgotPwd/forgotPwd" class="weui-footer__link">忘记密码？</navigator>
         </view>
     </view>

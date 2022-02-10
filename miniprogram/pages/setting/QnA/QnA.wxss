@@ -1,1 +1,45 @@
 /* pages/setting/QnA/QnA.wxss */
+.help {
+    width: 90vw;
+    margin: 0 auto;
+    padding: 15rpx 15rpx 0 15rpx;
+    font-size: 30rpx;
+    color: #333333;
+}
+
+.help .help_item {
+    margin: 20rpx auto;
+    border-bottom: 1rpx solid #ddd;
+}
+
+.help .help_item .title {
+    font-size: 30rpx;
+    height: 5vh;
+    line-height: 5vh;
+    display: flex;
+}
+
+.help .help_item .title .title_1 {
+    width: 630rpx;
+    height: 60rpx;
+    padding-left: 20rpx;
+}
+
+.help .help_item .title .title_2 {
+    width: 50rpx;
+    height: 60rpx;
+    text-align: center;
+}
+
+.help .help_item .title .title_2 image {
+    width: 40rpx;
+    height: 40rpx;
+    margin: 10rpx auto;
+}
+
+.help .help_item .detail {
+    margin: 10rpx auto;
+    font-size: 25rpx;
+    line-height: 40rpx;
+    text-indent: 2em;
+}
