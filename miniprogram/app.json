@@ -12,7 +12,8 @@
         "pages/home/job_info/job_info",
         "pages/home/certificate_info/certificate_info",
         "pages/register/forgotPwd/forgotPwd",
-        "pages/home/show_info/show_info"
+        "pages/home/show_info/show_info",
+        "pages/setting/QnA/QnA"
     ],
     "window": {
         "backgroundColor": "#07c160",

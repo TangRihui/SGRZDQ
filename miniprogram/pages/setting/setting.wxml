@@ -1,4 +1,49 @@
 <!--pages/setting/setting.wxml-->
 <mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
 </mp-navigation-bar>
-<text>pages/setting/setting.wxml</text>
+<view>
+  <view class="userinfo-bg">
+    <view class="info-card">
+      <view class="user-info">
+        <text class="user-name">{{name}}</text>
+        <view class="eid">
+          <text>{{eid}}</text>
+        </view>
+        <view class="detail">
+          <text>技术组</text><text>用户</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="setting">
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="./QnA/QnA" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                  <view>常见问题</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <!-- <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                  <view>信息去向</view>
+                  <view class="weui-cell__desc">查看「可获取当前账户信息」的管理员名单</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator> -->
+            <navigator aria-labelledby="js_cell_l1_bd" url="../register/forgotPwd/forgotPwd" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd" id="js_cell_l1_bd" aria-hidden="true">
+                  <view>修改密码</view>
+                  <view class="weui-cell__desc">仅支持「注册时使用的微信账号」登录后修改密码</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access" aria-hidden="true"></view>
+            </navigator>
+            <view bindtap="log_out" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                  <view>退出登录</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    <button open-type="feedback" class="weui-btn weui-btn_primary">问题反馈</button>
+  </view>
+</view>

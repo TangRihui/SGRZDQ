@@ -10,8 +10,10 @@ Page({
 
   /* 生命周期函数--监听页面加载 */
   onLoad: function (options) {
+    console.log(options.isAutoSignIn)
+    let isAutoSignIn = options.isAutoSignIn
     let that = this
-    that.autoSignin()
+    that.autoSignin(isAutoSignIn)
     if (wx.getUserProfile) {
       that.setData({
         canIUseGetUserProfile: true,
@@ -138,19 +140,114 @@ Page({
       }
     })
   },
-  autoSignin: function () {
+  autoSignin: function (e) {
+    var that = this
+    if (e == false || e == 'false' || e == "false") {
+      return
+    }
+    else {
+      that.onGetOpenid()
+      setTimeout(() => {
+        if (wx.getStorageSync('openid').length != 0) {
+          DBusers.where({
+            openid: wx.getStorageSync('openid')
+          })
+            .get()
+            .then(res => {
+              if (res.data.length == 1) {
+                console.log(res.data.name)
+                app.globalData.name = res.data.name
+                wx.switchTab({
+                  url: '../home/home',
+                  success: function (res) {
+                    console.log("登录成功")
+                    wx.showToast({
+                      title: '登录成功',
+                      icon: 'success',
+                      duration: 1500
+                    })
+                  }
+                })
+              }
+            })
+        }
+        else if (app.globalData.openid.length != 0) {
+          console.log(app.globalData.openid)
+          DBusers.where({
+            openid: app.globalData.openid
+          })
+            .get()
+            .then(res => {
+              console.log(res.data.length)
+              if (res.data.length == 1) {
+                console.log(res.data.name)
+                app.globalData.name = res.data.name
+                app.globalData.eid = res.data.eid
+                app.globalData.group = res.data.group
+                wx.switchTab({
+                  url: '../home/home',
+                  success: function (res) {
+                    console.log("登录成功")
+                    wx.showToast({
+                      title: '登录成功',
+                      icon: 'success',
+                      duration: 1500
+                    })
+                  }
+                })
+              }
+            })
+        }
+      }, 500);
+    }
+  },
+  signUp: function () {
     var that = this
     that.onGetOpenid()
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading'
+    })
     setTimeout(() => {
-      if (wx.getStorageSync('openid').length != 0) {
+      console.log(wx.getStorageSync('openid').length)
+      if (wx.getStorageSync('openid').length == 0) {
+        wx.navigateTo({
+          url: './signUp/signUp',
+        })
+      }
+      else {
+        that.signinOpenid()
+      }
+    }, 500);
+  },
+  signinOpenid: function () {
+    var that = this
+    that.onGetOpenid()
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading'
+    })
+    setTimeout(() => {
+      if (wx.getStorageSync('openid').length == 0) {
+        wx.showModal({
+          title: '登录信息异常',
+          content: '请使用密码登录，或联系工作人员解决',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              console.log('未获取openid')
+            }
+          }
+        })
+      }
+      else {
         DBusers.where({
           openid: wx.getStorageSync('openid')
         })
           .get()
           .then(res => {
+            console.log(res.data.length)
             if (res.data.length == 1) {
-              console.log(res.data.name)
-              app.globalData.name = res.data.name
               wx.switchTab({
                 url: '../home/home',
                 success: function (res) {
@@ -163,102 +260,34 @@ Page({
                 }
               })
             }
-          })
-      }
-      else if (app.globalData.openid.length != 0) {
-        console.log(app.globalData.openid)
-        DBusers.where({
-          openid: app.globalData.openid
-        })
-          .get()
-          .then(res => {
-            console.log(res.data.length)
-            if (res.data.length == 1) {
-              console.log(res.data.name)
-              app.globalData.name = res.data.name
-              app.globalData.eid = res.data.eid
-              app.globalData.group = res.data.group
-              wx.switchTab({
-                url: '../home/home',
+            else if (res.data.length == 0) {
+              wx.navigateTo({
+                url: './signUp/signUp',
+              })
+            }
+            else {
+              wx.showModal({
+                title: '登录失败',
+                content: '返回后重试或使用密码登录，仍无法登录请联系工作人员解决',
+                showCancel: false,
                 success: function (res) {
-                  console.log("登录成功")
-                  wx.showToast({
-                    title: '登录成功',
-                    icon: 'success',
-                    duration: 1500
-                  })
+                  if (res.confirm) {
+                    console.log('openid查询数据库异常')
+                  }
                 }
               })
             }
           })
       }
     }, 500);
-  },
-  signUp: function () {
-    var that = this
-    that.onGetOpenid()
-    console.log()
-    wx.navigateTo({
-      url: './signUp/signUp',
-    })
-  },
-  signinOpenid: function () {
-    var that = this
-    that.onGetOpenid()
-    if (wx.getStorageSync('openid').length == 0) {
-      wx.showModal({
-        title: '登录信息异常',
-        content: '请使用密码登录，或联系工作人员解决',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('未获取openid')
-          }
-        }
-      })
-    }
-    else {
-      DBusers.where({
-        openid: wx.getStorageSync('openid')
-      })
-        .get()
-        .then(res => {
-          console.log(res.data.length)
-          if (res.data.length == 1) {
-            wx.switchTab({
-              url: '../home/home',
-              success: function (res) {
-                console.log("登录成功")
-                wx.showToast({
-                  title: '登录成功',
-                  icon: 'success',
-                  duration: 1500
-                })
-              }
-            })
-          }
-          else if (res.data.length == 0) {
-            wx.navigateTo({
-              url: './signUp/signUp',
-            })
-          }
-          else {
-            wx.showModal({
-              title: '登录信息异常',
-              content: '请使用密码登录，或联系工作人员解决',
-              showCancel: false,
-              success: function (res) {
-                if (res.confirm) {
-                  console.log('openid查询数据库异常')
-                }
-              }
-            })
-          }
-        })
-    }
+
   },
 
   signinPwd: function () {
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading'
+    })
     var that = this
     that.onGetOpenid()
     console.log(wx.getStorageSync('openid'))

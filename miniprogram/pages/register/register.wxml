@@ -9,17 +9,15 @@
     </view>
     <text class="description">点击下方按钮注册/登录</text>
     <view class="userinfo-nickname-wrapper">
-        <a href='./signUp/signUp'>
-            <button class="weui-btn weui-btn_primary wide_btn" bindtap="signUp"> 注册 </button>
-        </a>
+        <button class="weui-btn weui-btn_primary wide_btn" bindtap="signUp"> 注册 </button>
     </view>
     <view class="userinfo-nickname-wrapper">
         <button class="weui-btn weui-btn_default active-btn wide_btn" bindtap="signinOpenid"> 使用微信账号登录 </button>
     </view>
     <button class="weui-btn weui-btn_default active-btn wide_btn" bindtap="signinPwd"> 使用密码登录 </button>
-        <view class="weui-footer">
-            <view class="weui-footer__links">
-                <navigator url="./forgotPwd/forgotPwd" class="weui-footer__link">忘记密码？</navigator>
-            </view>
+    <view class="weui-footer">
+        <view class="weui-footer__links">
+            <navigator url="./forgotPwd/forgotPwd" class="weui-footer__link">忘记密码？</navigator>
+        </view>
     </view>
 </view>

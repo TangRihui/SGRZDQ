@@ -7,20 +7,20 @@ Page({
     navTitle: '职工信息管理系统',
     back: false,
     openid: app.globalData.openid,
-    type: 0
+    type: 1
   },
 
-  personal_info: function(e) {
+  personal_info: function (e) {
     wx.navigateTo({
       url: './personal_info/personal_info',
     })
   },
-  job_info: function(e) {
+  job_info: function (e) {
     wx.navigateTo({
       url: './job_info/job_info',
     })
   },
-  certificate_info: function(e) {
+  certificate_info: function (e) {
     wx.navigateTo({
       url: './certificate_info/certificate_info',
     })
@@ -157,7 +157,7 @@ Page({
       })
     }
   },
-  
+
   /* 生命周期函数--监听页面初次渲染完成 */
   onReady: function () {
 
