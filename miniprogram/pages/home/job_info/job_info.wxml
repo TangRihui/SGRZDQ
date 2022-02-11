@@ -6,8 +6,8 @@
     <view class="weui-form">
         <view class="weui-form__text-area">
             <h2 class="weui-form__title">工作信息</h2>
-            <view class="weui-form__desc title1">用于职工信息填报，仅指定管理员可见。</view>
-            <view class="weui-form__desc title2">\n退出页面前点击屏幕下方「保存」按钮。</view>
+            <view class="weui-form__desc title1">用于信息填报，仅管理员可见。</view>
+            <view class="weui-form__desc title2">\n退出页面前点击「保存」按钮。</view>
         </view>
         <view class="weui-form__control-area">
             <view class="weui-cells__group weui-cells__group_form">
@@ -26,7 +26,7 @@
                             <label class="weui-label">工号</label>
                         </view>
                         <view class="weui-cell__bd">
-                            <input class="weui-input" value="{{eid}}" bindinput="eidInput" disabled />
+                            <input class="weui-input" value="{{eid}}" type="number" bindinput="eidInput" disabled />
                         </view>
                     </view>
 

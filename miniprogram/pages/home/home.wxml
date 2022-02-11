@@ -7,7 +7,7 @@
         <text class="title">热轧作业区</text>
         <text class="title">\n职工信息管理系统</text>
     </view>
-    <button class="weui-btn weui-btn_default wide_btn" bindtap="show_info" wx:if="{{type==1}}"> 查看班组信息 </button>
+    <button class="weui-btn weui-btn_default wide_btn" bindtap="show_info" wx:if="{{type==1||type==2||type==3}}"> 查看班组信息 </button>
     <view class="description"><text>所填信息仅管理员可见</text></view>
     <button class="weui-btn weui-btn_primary wide_btn" bindtap="personal_info"> 填写个人信息 </button>
     <button class="weui-btn weui-btn_primary wide_btn" bindtap="job_info"> 填写工作信息 </button>

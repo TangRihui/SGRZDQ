@@ -9,6 +9,7 @@ Page({
     name: '未登录',
     eid: '信息加载失败',
     group: '请重新进入小程序',
+    type: 0,
     types: ['用户', '小班组管理员', '大班组管理员', '系统管理员']
   },
   log_out: function(e) {
@@ -17,11 +18,14 @@ Page({
     app.globalData.name = ''
     app.globalData.eid = ''
     app.globalData.group = ''
+    app.globalData.type = ''
     this.setData({
       data: {
+        openid: '',
         name: '',
         eid: '',
-        group: ''
+        group: '',
+        type: 0,
       }
     })
     console.log(this.data, app.globalData)
@@ -36,6 +40,7 @@ Page({
       name: app.globalData.name,
       eid: app.globalData.eid,
       group: app.globalData.group,
+      type: app.globalData.type,
     })
   },
 

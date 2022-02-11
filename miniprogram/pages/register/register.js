@@ -144,8 +144,17 @@ Page({
     })
   },
   autoSignin: function (e) {
+    wx.showToast({
+      title: '加载中...',
+      icon: 'loading'
+    })
     var that = this
     if (e == false || e == 'false' || e == "false") {
+      wx.hideToast({
+        success: (res) => {
+          console.log('退出登录')
+        },
+      })
       return
     }
     else {
@@ -158,8 +167,16 @@ Page({
             .get()
             .then(res => {
               if (res.data.length == 1) {
-                console.log(res.data.name)
-                app.globalData.name = res.data.name
+                wx.hideToast({
+                  success: (res) => {
+                    console.log('登录用户信息正确')
+                  },
+                })
+                console.log(res.data[0])
+                app.globalData.name = res.data[0].name
+                app.globalData.eid = res.data[0].eid
+                app.globalData.group = res.data[0].group
+                app.globalData.type = res.data[0].type
                 wx.switchTab({
                   url: '../home/home',
                   success: function (res) {
@@ -183,10 +200,16 @@ Page({
             .then(res => {
               console.log(res.data.length)
               if (res.data.length == 1) {
-                console.log(res.data.name)
-                app.globalData.name = res.data.name
-                app.globalData.eid = res.data.eid
-                app.globalData.group = res.data.group
+                wx.hideToast({
+                  success: (res) => {
+                    console.log('登录用户信息正确')
+                  },
+                })
+                console.log(res.data[0])
+                app.globalData.name = res.data[0].name
+                app.globalData.eid = res.data[0].eid
+                app.globalData.group = res.data[0].group
+                app.globalData.type = res.data[0].type
                 wx.switchTab({
                   url: '../home/home',
                   success: function (res) {
@@ -201,14 +224,14 @@ Page({
               }
             })
         }
-      }, 500);
+      }, 750);
     }
   },
   signUp: function () {
     var that = this
     that.onGetOpenid()
     wx.showToast({
-      title: '加载中',
+      title: '加载中...',
       icon: 'loading'
     })
     setTimeout(() => {
@@ -227,7 +250,7 @@ Page({
     var that = this
     that.onGetOpenid()
     wx.showToast({
-      title: '加载中',
+      title: '加载中...',
       icon: 'loading'
     })
     setTimeout(() => {
@@ -288,7 +311,7 @@ Page({
 
   signinPwd: function () {
     wx.showToast({
-      title: '加载中',
+      title: '加载中...',
       icon: 'loading'
     })
     var that = this

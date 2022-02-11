@@ -41,7 +41,7 @@
     },
     "appid": "wx5c9d275fba3995b9",
     "projectname": "SGRZ",
-    "libVersion": "2.21.2",
+    "libVersion": "2.19.6",
     "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
     "condition": {
         "search": {

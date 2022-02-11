@@ -40,35 +40,35 @@ Page({
   },
   worktypePickerChange(e) {
     this.setData({
-      work_type: e.detail.value,
+      work_type: parseInt(e.detail.value),
     });
     console.log(this.data.work_type)
 
   },
   postPickerChange(e) {
     this.setData({
-      post: e.detail.value,
+      post: parseInt(e.detail.value),
     });
     console.log(this.data.post)
 
   },
   posthrPickerChange(e) {
     this.setData({
-      post_hr: e.detail.value,
+      post_hr: parseInt(e.detail.value),
     });
     console.log(this.data.post_hr)
 
   },
   postnoPickerChange(e) {
     this.setData({
-      post_no: e.detail.value,
+      post_no: parseInt(e.detail.value),
     });
     console.log(this.data.post_no)
 
   },
   postlevelPickerChange(e) {
     this.setData({
-      post_level: e.detail.value,
+      post_level: parseInt(e.detail.value),
     });
     console.log(this.data.post_level)
 

@@ -27,7 +27,7 @@ Page({
   // 表单输入处理函数
   sexPickerChange(e) {
     this.setData({
-      sex: e.detail.value,
+      sex: parseInt(e.detail.value),
     });
     console.log(this.data.sex)
   },
@@ -39,7 +39,7 @@ Page({
   },
   ageInput(e) {
     this.setData({
-      age: e.detail.value
+      age: parseInt(e.detail.value),
     });
     console.log(this.data.age)
   },
@@ -64,7 +64,7 @@ Page({
   },
   telInput(e) {
     this.setData({
-      tel: e.detail.value
+      tel: parseInt(e.detail.value),
     });
     console.log(this.data.tel)
   },

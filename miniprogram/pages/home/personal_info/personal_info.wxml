@@ -6,9 +6,8 @@
   <view class="weui-form">
     <view class="weui-form__text-area">
       <h2 class="weui-form__title">个人信息</h2>
-      <view class="weui-form__desc title1">用于职工信息填报，仅指定管理员可见。</view>
-      <view class="weui-form__desc title2">\n退出页面前点击屏幕下方「保存」按钮。</view>
-
+      <view class="weui-form__desc title1">用于信息填报，仅管理员可见。</view>
+      <view class="weui-form__desc title2">\n退出页面前点击「保存」按钮。</view>
     </view>
     <view class="weui-form__control-area">
       <view class="weui-cells__group weui-cells__group_form">
@@ -27,7 +26,7 @@
               <label class="weui-label">工号</label>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{eid}}" bindinput="eidInput" disabled />
+              <input class="weui-input" value="{{eid}}" type="number" bindinput="eidInput" disabled />
             </view>
           </view>
 
@@ -72,7 +71,7 @@
           <view class="weui-cell weui-cell_active">
             <view class="weui-cell__hd"><label class="weui-label">年龄</label></view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{age}}" placeholder="填写年龄" bindinput="ageInput" maxlength="2" placeholder-class="weui-input__placeholder" />
+              <input class="weui-input" value="{{age}}" placeholder="填写年龄" bindinput="ageInput" type="number" maxlength="2" placeholder-class="weui-input__placeholder" />
             </view>
           </view>
 
@@ -124,7 +123,7 @@
               <view class="weui-cell__desc">仅用于信息填报</view>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" value="{{id_no}}" placeholder="填写身份证号" bindinput="idnoInput" type="number" placeholder-class="weui-input__placeholder" maxlength="18" />
+              <input class="weui-input" value="{{id_no}}" placeholder="填写身份证号" bindinput="idnoInput" type="idcard" placeholder-class="weui-input__placeholder" maxlength="18" />
             </view>
           </view>
 

@@ -4,8 +4,8 @@ const db = wx.cloud.database()
 const DBusers = db.collection("users")
 Page({
     data: {
-        navTitle: '职工信息管理系统',
-        back: false,
+        navTitle: '班组信息',
+        back: true,
         openid: app.globalData.openid,
     },
 

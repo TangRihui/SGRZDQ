@@ -25,7 +25,7 @@
 }
 
 .weui-form__tips-area {
-  margin-bottom: 8vh;
+  padding-bottom: 8vh;
 }
 
 .weui-form__desc {

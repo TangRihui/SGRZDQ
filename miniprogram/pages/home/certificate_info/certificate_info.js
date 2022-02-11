@@ -27,7 +27,7 @@ Page({
   // 表单输入处理函数
   cerlevelPickerChange(e) {
     this.setData({
-      cer_level: e.detail.value,
+      cer_level: parseInt(e.detail.value),
     });
     console.log(this.data.cer_level)
   },
@@ -64,20 +64,20 @@ Page({
   },
   eduPickerChange(e) {
     this.setData({
-      edu: e.detail.value,
+      edu: parseInt(e.detail.value),
     });
     console.log(this.data.edu)
   },
   degreePickerChange(e) {
     this.setData({
-      degree: e.detail.value,
+      degree: parseInt(e.detail.value),
     });
     console.log(this.data.degree)
   },
   // 表单输入处理函数
   posttitlePickerChange(e) {
     this.setData({
-      post_title: e.detail.value,
+      post_title: parseInt(e.detail.value),
     });
     console.log(this.data.post_title)
   },
