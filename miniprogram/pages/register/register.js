@@ -167,27 +167,44 @@ Page({
             .get()
             .then(res => {
               if (res.data.length == 1) {
-                wx.hideToast({
-                  success: (res) => {
-                    console.log('登录用户信息正确')
-                  },
-                })
-                console.log(res.data[0])
-                app.globalData.name = res.data[0].name
-                app.globalData.eid = res.data[0].eid
-                app.globalData.group = res.data[0].group
-                app.globalData.type = res.data[0].type
-                wx.switchTab({
-                  url: '../home/home',
-                  success: function (res) {
-                    console.log("登录成功")
-                    wx.showToast({
-                      title: '登录成功',
-                      icon: 'success',
-                      duration: 2000
-                    })
-                  }
-                })
+                if (res.data[0].eid == '' || res.data[0].group == '' || res.data[0].name == '' || res.data[0].openid == '') {
+                  wx.showModal({
+                    title: '用户信息不完整',
+                    content: '请先完成账户注册',
+                    showCancel: false,
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.navigateTo({
+                          url: './signUp/signUp',
+                        })
+                        console.log('用户信息不完整')
+                      }
+                    }
+                  })
+                }
+                else {
+                  wx.hideToast({
+                    success: (res) => {
+                      console.log('登录用户信息正确')
+                    },
+                  })
+                  console.log(res.data[0])
+                  app.globalData.name = res.data[0].name
+                  app.globalData.eid = res.data[0].eid
+                  app.globalData.group = res.data[0].group
+                  app.globalData.type = res.data[0].type
+                  wx.switchTab({
+                    url: '../home/home',
+                    success: function (res) {
+                      console.log("登录成功")
+                      wx.showToast({
+                        title: '登录成功',
+                        icon: 'success',
+                        duration: 2000
+                      })
+                    }
+                  })
+                }
               }
             })
         }

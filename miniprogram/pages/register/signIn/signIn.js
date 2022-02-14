@@ -68,21 +68,34 @@ Page({
           })
         }
         else if (res.data.length == 1) {
-          this.setData({
-            nameAlert: false
-          })
-          console.log(this.data.openid)
-          wx.switchTab({
-            url: '../../home/home',
-            success: function(res) {
-              console.log("登录成功")
-              wx.showToast({
-                title: '登录成功',
-                icon: 'success',
-                duration: 1500
-              })
-            }
-          })
+          if (res.data[0].eid == '' || res.data[0].group == '' || res.data[0].name == '' || res.data[0].openid == '') {
+            wx.showModal({
+              title: '用户信息不完整',
+              content: '请先完成账户注册',
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: './signUp/signUp',
+                  })
+                  console.log('用户信息不完整')
+                }
+              }
+            })
+          }
+          else {
+            wx.switchTab({
+              url: '../../home/home',
+              success: function(res) {
+                console.log("登录成功")
+                wx.showToast({
+                  title: '登录成功',
+                  icon: 'success',
+                  duration: 1500
+                })
+              }
+            })
+          }
         }
         else {
           wx.showModal({

@@ -379,40 +379,87 @@ Page({
             })
           }
           else if (res.data.length == 1) {
-            if (that.data.inputPwd.length >= 4 && that.data.inputPwdCheck.length >= 4) {
-              if (that.data.inputPwd == that.data.inputPwdCheck) {
-                DBusers.doc(that.data.docId)
-                  .update({
-                    data: {
-                      pwd: that.data.inputPwd,
-                      openid: app.globalData.openid
+            if (res.data[0].openid == '') {
+              if (that.data.inputPwd.length >= 4 && that.data.inputPwdCheck.length >= 4) {
+                if (that.data.inputPwd == that.data.inputPwdCheck) {
+                  DBusers.where({
+                    openid: app.globalData.openid
+                  })
+                    .get()
+                    .then(res => {
+                      console.log(res)
+                      if (res.data.length == 1) {
+                        wx.showModal({
+                          title: '微信账号已存在',
+                          content: '只能使用该微信账号注册一个系统账号',
+                          showCancel: false,
+                          success: function (res) {
+                            if (res.confirm) {
+                              console.log('微信账号已存在')
+                            }
+                          }
+                        })
+                      }
+                      else if (res.data.length == 0) {
+                        DBusers.doc(that.data.docId)
+                          .update({
+                            data: {
+                              pwd: that.data.inputPwd,
+                              openid: app.globalData.openid
+                            }
+                          })
+                          .then(res => {
+                            console.log(res)
+                            app.globalData.name = res.data[0].name
+                            app.globalData.eid = res.data[0].eid
+                            app.globalData.group = res.data[0].group
+                          })
+                        wx.switchTab({
+                          url: '../../home/home',
+                          success: function (res) {
+                            wx.showToast({
+                              title: '注册成功',
+                              icon: 'success',
+                              duration: 1500
+                            })
+                          }
+                        })
+                      }
+                      else {
+                        wx.showModal({
+                          title: '系统错误',
+                          content: '数据库中存在重复的openid',
+                          showCancel: false,
+                          success: function (res) {
+                            if (res.confirm) {
+                              console.log('数据库中存在重复的openid')
+                            }
+                          }
+                        })
+                      }
+                    })
+                }
+                else {
+                  wx.showModal({
+                    title: '两次输入密码不同',
+                    content: '请确认密码后再次注册',
+                    showCancel: false,
+                    success: function (res) {
+                      if (res.confirm) {
+                        console.log('注册失败提示，两次输入密码不同')
+                      }
                     }
                   })
-                  .then(res => {
-                    console.log(res)
-                    app.globalData.name = res.data[0].name
-                    app.globalData.eid = res.data[0].eid
-                    app.globalData.group = res.data[0].group
-                  })
-                wx.switchTab({
-                  url: '../../home/home',
-                  success: function (res) {
-                    wx.showToast({
-                      title: '注册成功',
-                      icon: 'success',
-                      duration: 1500
-                    })
-                  }
-                })
+                }
               }
               else {
                 wx.showModal({
-                  title: '两次输入密码不同',
+                  title: '密码至少为4位',
                   content: '请确认密码后再次注册',
                   showCancel: false,
                   success: function (res) {
                     if (res.confirm) {
-                      console.log('注册失败提示，两次输入密码不同')
+                      console.log('注册失败提示，密码至少为4位')
                     }
                   }
                 })
@@ -420,12 +467,15 @@ Page({
             }
             else {
               wx.showModal({
-                title: '密码至少为4位',
-                content: '请确认密码后再次注册',
+                title: '用户信息不完整',
+                content: '请先完成账户注册',
                 showCancel: false,
                 success: function (res) {
                   if (res.confirm) {
-                    console.log('注册失败提示，密码至少为4位')
+                    wx.navigateTo({
+                      url: './signUp/signUp',
+                    })
+                    console.log('用户信息不完整')
                   }
                 }
               })

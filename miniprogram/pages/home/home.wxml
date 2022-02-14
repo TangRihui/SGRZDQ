@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
 </mp-navigation-bar>
-<view class="signin">
+<view>
     <view class="logo-container">
         <!-- <image src="../../image/nebula.png" class="logo"></image> -->
         <text class="title">热轧作业区</text>
