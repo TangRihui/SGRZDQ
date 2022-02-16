@@ -9,40 +9,74 @@ Page({
     nameAlert: false,
     inputName: '',
     inputPwd: '',
+    showAgreement: false,
+    buttons: [
+      {
+        type: 'default',
+        className: '',
+        text: '拒绝',
+        value: 0
+      },
+      {
+        type: 'primary',
+        className: '',
+        text: '同意',
+        value: 1
+      }
+    ]
+  },
+  openAgreement: function () {
+    this.setData({
+      showAgreement: true
+    })
+  },
+  buttontap(e) {
+    let that = this
+    console.log(e.detail)
+    if (e.detail.index == 1) {
+      that.submitSignin()
+    }
+    else if (e.detail.index == 0) {
+      that.setData({
+        showAgreement: false
+      })
+    }
   },
   bindNameInput: function (e) {
-    this.setData({
+    let that = this
+    that.setData({
       inputName: e.detail.value
     })
-    if (this.data.inputName.length != 0) {
+    if (that.data.inputName.length != 0) {
       DBusers.where({
-        name: this.data.inputName
+        name: that.data.inputName
       })
         .get()
         .then(res => {
           if (res.data.length == 0) {
-            this.setData({
+            that.setData({
               nameAlert: true
             })
           }
           else if (res.data.length == 1) {
-            this.setData({
+            that.setData({
               nameAlert: false
             })
           }
         })
     }
-    else if (this.data.inputName.length == 0) {
-      this.setData({
+    else if (that.data.inputName.length == 0) {
+      that.setData({
         nameAlert: false
       })
     }
   },
   bindPwdInput: function (e) {
-    this.setData({
+    var that = this
+    that.setData({
       inputPwd: e.detail.value
     })
-    console.log("name:" + this.data.inputName, "pwd:" + this.data.inputPwd)
+    console.log("name:" + that.data.inputName, "pwd:" + that.data.inputPwd)
   },
   submitSignin: function (e) {
     var that = this
@@ -54,13 +88,16 @@ Page({
     })
       .get()
       .then(res => {
-        console.log(res.data.length,res.data[0])
+        console.log(res.data.length, res.data[0])
         if (res.data.length == 0) {
           wx.showModal({
             title: '登录失败',
             content: '请确认姓名、密码后再次登录',
             showCancel: false,
             success: function (res) {
+              that.setData({
+                showAgreement: false
+              })
               if (res.confirm) {
                 console.log('登录失败提示')
               }
@@ -74,6 +111,9 @@ Page({
               content: '请先完成账户注册',
               showCancel: false,
               success: function (res) {
+                that.setData({
+                  showAgreement: false
+                })
                 if (res.confirm) {
                   wx.navigateTo({
                     url: './signUp/signUp',
@@ -84,9 +124,12 @@ Page({
             })
           }
           else {
+            that.setData({
+              showAgreement: false
+            })
             wx.switchTab({
               url: '../../home/home',
-              success: function(res) {
+              success: function (res) {
                 console.log("登录成功")
                 wx.showToast({
                   title: '登录成功',
@@ -103,6 +146,9 @@ Page({
             content: '请确认网络正常后再次登录，或联系管理员',
             showCancel: false,
             success: function (res) {
+              that.setData({
+                showAgreement: false
+              })
               if (res.confirm) {
                 console.log('登录失败提示，系统错误（网络？）')
               }

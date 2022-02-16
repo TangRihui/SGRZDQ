@@ -1,4 +1,13 @@
 // miniprogram/pages/home/home.js
+// V1.0.0
+//1、提供「微信账号登录」和「密码登录」两种登录方式，在每次启动小程序时自动使用微信账号登录。
+//2、普通用户可查看、修改本人信息。
+//3、管理员用户可获取班组信息的excel表格的下载链接。
+//4、登录后可退出登录，登录其他账号。
+// 测试备注
+//1、首次注册方法：首次访问小程序时，点击「注册」按钮，输入姓名test1，工号008888，设置密码后登录小程序，该账户为系统管理员账户。
+//2、登录其他账号方法：点击「使用密码登录」按钮，输入姓名test2，密码111111，该账户为普通用户。
+//3、退出账户方法：登录小程序后，在下方tab栏点击「设置」后，点击「退出登录」。
 const app = getApp()
 const db = wx.cloud.database()
 const DBusers = db.collection("users")
@@ -6,6 +15,7 @@ Page({
   data: {
     navTitle: '注册/登录',
     back: false,
+    // isTipTrue: false
   },
 
   /* 生命周期函数--监听页面加载 */
@@ -22,8 +32,19 @@ Page({
     // 将工号eid由number格式转换为6位string格式
     // 重新导入数据库后运行该函数
     // that.numToString()
-  },
+      // time = options.formatTime(new Date());
+      // console.log("打开小程序的时间是：", time)
+      that.setData({
+        isTipTrue:true
+      })
 
+  
+  },
+  tipAgree:function(){
+    this.setData({
+      isTipTrue:false
+    })
+ },
   async numToString() {
     var that = this
     // 获取数据库

@@ -17,22 +17,23 @@ Page({
     wx.cloud.callFunction({
       name: "getDB",
       data: {
+        type: app.globalData.type
       },
       complete: res => {
         console.log(res)
         // 下载并预览文件
-        let url = res.result.uploadFile.fileID
-        let fileName = res.result.dataCVS
+        var url = res.result.uploadFile.fileID
+        var fileName = res.result.dataCVS
         console.log(res, url, fileName)
-        let urlSplit1 = new Array()
-        let urlSplit2 = new Array()
+        var urlSplit1 = new Array()
+        var urlSplit2 = new Array()
         urlSplit1 = url.split('/')
         urlSplit2 = urlSplit1[2].split('.')
         // console.log(urlSplit1, urlSplit2)
-        let dlUrl = 'https://' + urlSplit2[1] + '.tcb.qcloud.la/' + fileName
+        var dlUrl = 'https://' + urlSplit2[1] + '.tcb.qcloud.la/' + fileName
         console.log(dlUrl)
-        let nameSplit1 = new Array()
-        let nameSplit2 = new Array()
+        var nameSplit1 = new Array()
+        var nameSplit2 = new Array()
         nameSplit1 = fileName.split('-')
         nameSplit2 = nameSplit1[2].split('.')
         console.log(nameSplit2[0])
@@ -75,7 +76,34 @@ Page({
 
     /* 生命周期函数--监听页面加载 */
     onLoad: function (options) {
-
+      DBusers.where({
+        openid: app.globalData.openid
+      })
+      .get()
+      .then(res => {
+        console.log(res.data)
+        if (res.data.length == 1) {
+          app.globalData.type = res.data[0].type
+          this.setData({
+            type: res.data[0].type
+          })
+        }
+        else {
+          wx.showModal({
+            title: '信息获取异常',
+            content: '请检查网络后重新进入该页面',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户信息获取错误')
+                wx.switchTab({
+                  url: '../home',
+                })
+              }
+            }
+          })
+        }
+      })
     },
 
     /* 生命周期函数--监听页面初次渲染完成 */

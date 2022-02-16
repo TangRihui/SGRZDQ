@@ -28,8 +28,31 @@
                 </view>
             </label>
         </view>
+        <view class="weui-form__tips-area">
+            <view class="weui-form__tips">
+                本小程序内获取的用户信息仅用于确认用户身份及公司内部信息填报，您提交的信息仅管理员可见。
+            </view>
+        </view>
         <view slot="button">
-            <button class="weui-btn" type="primary" bindtap="submitSignin">登录</button>
+            <button class="weui-btn" type="primary" bindtap="openAgreement">授权登录</button>
         </view>
     </view>
+
+
+
+
+
+    <mp-half-screen-dialog 
+  bindbuttontap="buttontap"
+  show="{{showAgreement}}"
+  maskClosable="{{false}}" 
+  title="测试标题B" 
+  subTitle="测试标题B的副标题"
+  desc="辅助描述内容，可根据实际需要安排"
+  tips="辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排辅助提示内容，可根据实际需要安排"
+  buttons="{{buttons}}"
+></mp-half-screen-dialog>
+<button class="weui-btn" type="primary" bindtap="open">Open</button>
+
+
 </mp-form-page>

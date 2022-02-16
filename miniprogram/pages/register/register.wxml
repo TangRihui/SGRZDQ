@@ -8,6 +8,11 @@
         <text class="title">\n职工信息管理系统</text>
     </view>
     <text class="description">点击下方按钮注册/登录</text>
+    <!-- <view class="weui-form__tips-area">
+        <view class="weui-form__tips">
+            如果您同意本小程序收集个人信息，请进行注册或登录；如果您不同意，请退出该小程序。
+        </view>
+    </view> -->
     <view class="userinfo-nickname-wrapper">
         <button class="weui-btn weui-btn_primary wide_btn" bindtap="signUp"> 注册 </button>
     </view>
@@ -16,6 +21,25 @@
     </view>
     <button class="weui-btn weui-btn_default active-btn wide_btn" bindtap="signinPwd"> 使用密码登录 </button>
     <view class="weui-footer">
+        <view class="weui-form__tips-area">
+            <view class="weui-form__tips">
+                本小程序内获取的用户信息仅用于确认用户身份及公司内部信息填报，您提交的信息仅管理员可见。
+            </view>
+
+            <text aria-role="option" aria-labelledby="js_tips_txt js_tips_link" id="js_tips_txt" class="weui-agree__text">点击下一步即表示</text>
+            <navigator id="js_tips_link" url="javascript:">同意用户协议</navigator>
+
+            <checkbox-group bindchange="checkboxChange">
+                <label aria-role="" class="weui-wa-hotarea weui-agree {{msg ? 'weui-agree_animate' : ''}}">
+                    <checkbox aria-role="" value="{{checkValue}}" class="weui-agree__checkbox-check" />
+                    <view class="weui-agree__checkbox" aria-labelledby="js_agree_txt js_agree_link" aria-role="checkbox"></view>
+                    <view class="weui-agree__text"><text aria-hidden="true" id="js_agree_txt">阅读并同意</text>
+                        <navigator id="js_agree_link">《隐私政策及用户服务协议》</navigator>
+                    </view>
+                </label>
+            </checkbox-group>
+
+        </view>
         <view class="weui-footer__links">
             <navigator url="../setting/QnA/QnA" class="weui-footer__link"><text space="ensp">常见问题</text></navigator>
         </view>
@@ -23,4 +47,14 @@
             <navigator url="./forgotPwd/forgotPwd" class="weui-footer__link">忘记密码？</navigator>
         </view> -->
     </view>
+
+
+
+
+    <!-- <view class="payWay-container {{isTipTrue?'isTipShow':'isTipHide'}}">
+        <include src="../../templet/templet"></include>
+    </view> -->
+
+
+
 </view>

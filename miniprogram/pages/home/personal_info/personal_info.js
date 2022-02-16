@@ -81,7 +81,7 @@ Page({
     console.log(this.data.id_add)
   },
   submitPersonal(e) {
-    let that = this
+    var that = this
     console.log(
       "name:" + that.data.name, "eid:" + that.data.eid,
       "group:" + that.data.group, "openid:" + app.globalData.openid,
@@ -130,7 +130,7 @@ Page({
   },
   /* 生命周期函数--监听页面加载 */
   onLoad: function (options) {
-    let that = this
+    var that = this
     that.setData({
       openid: app.globalData.openid,
       name: app.globalData.name,

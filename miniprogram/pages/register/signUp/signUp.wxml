@@ -50,8 +50,13 @@
         </view>
         <view role="alert" id="name_alert" wx:if="{{pwdAlert2}}" class="weui-cells__tips weui-cells__tips_warn">密码与确认密码需一致</view>
 
+        <view class="weui-form__tips-area">
+            <view class="weui-form__tips">
+                以上填写信息仅用于用户身份确认和账号注册。
+            </view>
+        </view>
         <view slot="button">
-            <button class="weui-btn" type="primary" bindtap="submitSignup">注册</button>
+            <button class="weui-btn" type="primary" bindtap="submitSignup">授权注册</button>
         </view>
     </view>
 </mp-form-page>
