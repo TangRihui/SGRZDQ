@@ -25,7 +25,7 @@
             <label for="js_current_input" class="weui-cell weui-cell_active">
                 <view class="weui-cell__hd"><span class="weui-label">工号</span></view>
                 <view class="weui-cell__bd weui-flex">
-                    <input id="pwd_input" class="weui-input" type="text" bindinput="bindEidInput" placeholder="填写6位工号" maxlength="6"/>
+                    <input id="pwd_input" class="weui-input" type="text" bindinput="bindEidInput" placeholder="填写6位工号" maxlength="6" />
                 </view>
             </label>
         </view>
@@ -54,9 +54,22 @@
             <view class="weui-form__tips">
                 以上填写信息仅用于用户身份确认和账号注册。
             </view>
+            <view class="weui-form__tips">
+                <text aria-role="option" aria-labelledby="js_tips_txt js_tips_link" id="js_tips_txt" class="weui-agree__text">点击「授权注册」即表示同意</text>
+                <navigator id="js_tips_link" url="../../privacy/privacy">《隐私政策》</navigator>
+            </view>
         </view>
+
         <view slot="button">
-            <button class="weui-btn" type="primary" bindtap="submitSignup">授权注册</button>
+            <button class="weui-btn" type="primary" bindtap="openAgreement">授权注册</button>
         </view>
+
+        <mp-half-screen-dialog 
+        bindbuttontap="buttontap" 
+        show="{{showAgreement}}" 
+        maskClosable="{{false}}" 
+        title="《隐私政策》" 
+        desc="本小程序提供的服务需要收集您的个人信息，在开始使用本小程序前，请仔细阅读并充分理解《隐私政策》。关闭此弹窗后，点击蓝色文字「《隐私政策》」可阅读完整版《隐私政策》。如您同意该《隐私政策》，请点击「同意」开始使用，我们将充分尊重与保护您的个人信息。" tips="根据您的使用需求，本小程序收集的信息可能包括如下个人信息：OpenId（微信用户对于一个小程序的唯一标识）；姓名；工号；班组；性别；出生日期；年龄；籍贯；现居地；政治面貌；联系电话；身份证号；身份证地址；参加工作时间；到热轧厂时间；工种；岗位；HR岗位；岗位序列；岗次；第一职业；鉴定等级；证书编号；发证日期；发证机关；毕业院校；专业；学历；学位；职称；证书号。" buttons="{{buttons}}">
+        </mp-half-screen-dialog>
     </view>
 </mp-form-page>

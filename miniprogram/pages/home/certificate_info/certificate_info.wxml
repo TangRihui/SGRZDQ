@@ -156,6 +156,10 @@
             <view class="weui-form__tips">
                 本小程序使用微信云开发服务，复用微信私有协议及链路，保证业务安全性。
             </view>
+            <view class="weui-form__tips">
+                <text aria-role="option" aria-labelledby="js_tips_txt js_tips_link" id="js_tips_txt" class="weui-agree__text">阅读</text>
+                <navigator id="js_tips_link" url="../../privacy/privacy">《隐私政策》</navigator>
+            </view>
         </view>
 
         <view class="footer">

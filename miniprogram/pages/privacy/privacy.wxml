@@ -1,0 +1,142 @@
+<!--pages/Privacy/privacy.wxml-->
+<mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
+</mp-navigation-bar>
+
+<view class="page" data-weui-theme="{{theme}}" data-weui-mode="{{mode}}">
+    <view class="weui-msg">
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">《隐私政策》</view>
+            <view class="msg_content_bold">
+                <text space="emsp">  热轧作业区职工信息管理系统（以下简称为“热轧管理小程序”）提供的服务需要收集您的个人信息，在开始使用热轧管理小程序前，请仔细阅读并充分理解《隐私政策》，我们将充分尊重与保护您的个人信息。</text>
+            </view>
+            <view class="msg_content">
+                <text space="emsp">  在使用热轧管理小程序提供的各项服务前，请您务必仔细阅读并理解本隐私政策，特别是以<text class="bold_text">粗体/<text class="bold_ul">粗体下划线标识</text></text>的条款，您应重点阅读，在确认充分理解并同意后再开始使用。</text>
+            </view>
+            <view class="msg_content">
+                <text space="emsp">  如对本隐私政策内容有任何疑问、意见或建议，您可通过“隐私政策”中提供的联系方式或微信小程序的“反馈与投诉”渠道与我们联系。</text>
+            </view>
+            <view class="msg_content">
+                <text space="emsp">  我们的<text class="bold_text"><text class="bold_ul">隐私政策可能发生变更。</text></text>我们会及时在小程序相应位置发布更新后的隐私政策，请您留意我们对本隐私政策进行的修改。未经您的明确同意，我们不会限制您按照本隐私政策所应享有的权利。如果个人信息的处理目的、处理方式和处理的个人信息种类发生变更，我们会重新获取您的同意。</text>
+            </view>
+            <view class="msg_content_bold">
+                <text space="emsp">  根据您的使用需求，热轧管理小程序收集的信息可能包括如下个人信息：</text>
+            </view>
+            <view class="msg_content">
+                • OpenId（微信用户对该小程序的唯一标识）；
+            </view>
+            <view class="msg_content">
+                • 姓名； • 工号； • 班组； • 性别；
+            </view>
+            <view class="msg_content">
+                • 出生日期； • 年龄； • 籍贯；
+            </view>
+            <view class="msg_content">
+                • 现居地； • 政治面貌； • 联系电话；
+            </view>
+            <view class="msg_content">
+                • 身份证号； • 身份证地址；
+            </view>
+            <view class="msg_content">
+                • 参加工作时间； • 到热轧厂时间；
+            </view>
+            <view class="msg_content">
+                • 工种； • 岗位； • HR岗位；
+            </view>
+            <view class="msg_content">
+                • 岗位序列； • 岗次； • 第一职业；
+            </view>
+            <view class="msg_content">
+                • 鉴定等级； • 证书编号；
+            </view>
+            <view class="msg_content">
+                • 发证日期； • 发证机关；
+            </view>
+            <view class="msg_content">
+                • 毕业院校； • 专业； • 学历； • 学位；
+            </view>
+            <view class="msg_content">
+                • 职称； • 证书号。
+            </view>
+            <view class="msg_content_bold">
+                <text space="emsp">  我们将您的个人信息保存多久？</text>
+            </view>
+            <view class="msg_content">
+                <text space="emsp">  我们仅在实现本隐私政策所述之目的、或法律法规允许或要求的期限内，保存您的个人信息。
+  为了确定您的个人信息的保存期限，我们可能使用以下标准，例如：
+• 如果您<text class="bold_text">同意该隐私政策并创建了账号</text>，我们将保存您的个人信息直至您要求我们进行删除；
+• 如果您<text class="bold_text">同意该隐私政策并登录热轧管理小程序</text>，在小程序内填写并提交个人信息，我们将保存您的个人信息直至您要求我们进行删除。
+  当我们不再需要保存您的个人信息时，我们会从系统和记录中删除您的个人信息，或进行匿名化处理以保证您不再被识别。</text>
+            </view>
+            <view class="msg_content_bold">
+                <text space="emsp">  我们如何存储和保护您的信息？
+  我们将您的个人信息存储在哪里？</text>
+            </view>
+            <view class="msg_content">
+                <text space="emsp">  热轧管理小程序使用了微信云开发技术，使用微信和腾讯云联合提供技术保证的云数据库和云存储。我们将收集到的您的个人信息<text class="bold_text">存储在微信云数据库中</text>，我们仅在安全、合法的情况下，允许管理员将您的个人信息<text class="bold_text">存储至微信云存储中</text>。</text>
+            </view>
+            <view class="msg_content_bold">
+                <text space="emsp">  您的个人信息是否安全？</text>
+            </view>
+            <view class="msg_content">
+                <text space="emsp">  我们承诺保护您的个人信息安全，并采取一切合理的预防措施。
+  热轧管理小程序基于微信小程序平台，使用了微信云开发技术，采用Serverless开发模式，使用微信和腾讯云联合提供技术保证的云函数、云数据库、云存储功能。云函数是在云端运行的代码，微信私有协议天然鉴权，防止未经授权的访问；云数据库为文档型数据库，稳定可靠；云存储可在云端存储文件，自带CDN加速。
+  我们将尽最大努力来保护您的个人信息，一旦我们收到您的个人信息，我们将使用严格的程序和安全功能来防止未经授权的访问。但是，通过互联网传输数据并不是完全安全的，因此我们无法保证您的数据传输一定安全，该等风险将由您自行承担。</text>
+            </view>
+            <view class="msg_content_bold">
+                <text space="emsp">  您对您的个人信息有哪些权利和选择？</text>
+            </view>
+            <view class="msg_content">
+                <text space="emsp">  我们尊重您的隐私权，以及您对您的个人信息的控制能力。对于您的个人信息，您拥有以下权利和选择：
+<text class="bold_text">知情权</text>
+  您有权获得关于我们如何处理您的个人信息以及您对您的个人信息的权利的清晰、透明和易于理解的说明。因此，我们向您提供了这一详细的隐私政策。
+  您也可以通过“隐私政策”中提供的联系方式或微信小程序的“反馈与投诉”渠道联系我们以获取更多信息。如果本隐私政策有任何更新，我们会向您提供最新版本的隐私政策。
+<text class="bold_text">限制与拒绝权</text>
+  您有权限制或拒绝我们对您的个人信息进行处理，除非法律、行政法规另有规定。
+  您可以在我们向您征求同意时予以限制或拒绝，或通过“隐私政策”中提供的联系方式或微信小程序的“反馈与投诉”渠道联系我们来行使这一权利。
+<text class="bold_text">查阅和复制权</text>
+  您有权查阅、复制我们持有的关于您的个人信息（可能有相应的限制条件）。
+<text class="bold_text">转移权</text>
+  您有权要求我们将您的个人信息转移至您指定的个人信息处理者（需符合国家网信部门规定的特定条件）。
+  请您通过“隐私政策”中提供的联系方式或微信小程序的“反馈与投诉”渠道联系我们来行使这一权利。
+<text class="bold_text">更正权</text>
+  如果您的个人信息不正确、不完整或未更新，您有权要求更正该等信息。
+  请您通过“隐私政策”中提供的联系方式或微信小程序的“反馈与投诉”渠道联系我们来行使这一权利。如您已登录热轧管理小程序，您可以进入填写信息页面删除或修改您的部分信息。
+<text class="bold_text">删除权</text>
+  在下列情形中，您有权要求我们删除您的个人信息：
+  (i)如果处理的目的已经实现、无法实现，或者不再需要个人信息来达到此目的；
+  (ii)如果我们停止提供产品或服务，或者保存期限已届满；
+  (iii)如果您撤回您的同意；
+  (iv)如果我们对您的个人信息处理活动违反法律、行政法规或我们之间的约定；
+  (v)法律、行政法规规定的其他情形。
+  请注意，删除权不是绝对的，例如，法律可能要求我们在特定期限内保留您的个人信息。当技术上难以删除您的个人信息时，我们不会删除您的个人信息，但会停止处理活动，并采取其他技术措施进行必要保护。
+  请您通过“隐私政策”中提供的联系方式或微信小程序的“反馈与投诉”渠道联系我们来行使这一权利。
+<text class="bold_text">撤回同意（限于我们基于同意处理个人信息的情形）</text>
+  如果我们对您的个人信息的处理是基于您的同意，那么您可以撤回同意。撤回同意并不影响在撤回之前我们基于同意处理个人信息的合法性。
+  请您理解，特定的业务功能和服务将需要您的信息才能完成，当您撤回同意后，我们无法继续为您提供撤回同意所对应的服务，也将不再处理您相应的个人信息。
+  请您通过“隐私政策”中提供的联系方式或微信小程序的“反馈与投诉”渠道联系我们来行使这一权利。
+<text class="bold_text">注销账号</text>
+  在创建账号之后，您可以注销您的账号。
+  如果您想注销您的账号，请您通过“隐私政策”中提供的联系方式或微信小程序的“反馈与投诉”渠道联系我们。
+<text class="bold_text">投诉或采取其他维护您合法权利的途径</text>
+  如果您不满意我们给您的答复，您有权向相关监管机构投诉，尤其是如果您认为我们处理您的个人信息损害了您的权益。
+  如果我们拒绝了您行使权利的请求，您可以提起诉讼。
+</text>
+<view class="msg_content_bold">
+    <text space="emsp">联系我们</text>
+</view>
+<view class="msg_content">
+    <text space="emsp">  如果您对我们如何处理、保护您的个人信息有任何疑问或担忧，或者您想行使上述任何权利，请发送电子邮件至tangrihui@hotmail.com联系我们。
+  您也可以前往以下地址联系我们的个人信息保护负责人：热轧作业区301办公室。
+  通常情况下，我们会在确认您的身份后7个工作日内尽快回复您；如果情况复杂、需要延期的，我们也会在7个工作日内向您说明。
+  如果您不满意我们的答复，特别是当您认为我们对您的个人信息的处理损害了您的权益时，您有权向相关监管机构进行投诉。
+
+
+</text>
+</view>
+        </view>
+        </view>
+        <view class="weui-msg__tips-area">
+            <view class="weui-msg__tips">热轧厂热轧作业区</view>
+        </view>
+    </view>
+</view>

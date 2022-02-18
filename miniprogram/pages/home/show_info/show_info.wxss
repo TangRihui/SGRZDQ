@@ -1,7 +1,7 @@
 /* pages/home/show_info/show_info.wxss */
 .wide_btn {
     width: 55% !important;
-    margin: 6vh auto 6vh auto;
+    margin: 12vh auto 7vh auto;
   }
 .link_area {
     width: 84vw;
@@ -9,10 +9,14 @@
     background-color: #eeeeee;
     border-radius: 30rpx;
     padding: 15rpx 25rpx 15rpx 25rpx;
-    margin: 3vh auto 3vh auto;
+    margin: 3vh auto 2vh auto;
     font-size: 36rpx;
 }
 .weui-form__tips-area {
-  margin-top: 0;
+  margin: 0 0 3vh 0;
   padding-top: 0;
+}
+
+.weui-form__tips {
+  margin-top: 1vh;
 }

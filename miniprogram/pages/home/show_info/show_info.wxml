@@ -14,4 +14,13 @@
             该文件生成时间：{{creatDate}} {{creatTime}}
         </view>
     </view>
+    <view class="weui-form__tips-area">
+        <view class="weui-form__tips">
+            本小程序内收集的用户信息仅用于公司内部信息填报，禁止用于其他用途，请确保该文件去向的安全性。
+        </view>
+        <view class="weui-form__tips">
+            <text aria-role="option" aria-labelledby="js_tips_txt js_tips_link" id="js_tips_txt" class="weui-agree__text">阅读</text>
+            <navigator id="js_tips_link" url="../../privacy/privacy">《隐私政策》</navigator>
+        </view>
+    </view>
 </view>

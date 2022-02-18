@@ -1,0 +1,45 @@
+/* pages/Privacy/privacy.wxss */
+.weui-msg__text-area:first-child {
+    padding-top: 0
+  }
+.weui-msg__tips-area {
+    padding-bottom: 2vh;
+}
+.weui-msg__icon-area {
+    margin-bottom: 0
+  }
+  
+  .weui-msg__text-area {
+    margin-bottom: 0
+  }
+  .weui-msg__title+.weui-msg__custom-area {
+    margin-top: 0
+  }
+  
+  .weui-msg__desc+.weui-msg__custom-area,
+  .weui-msg__desc-primary+.weui-msg__custom-area {
+    margin-top: 0
+  }
+  .weui-msg__tips-area:last-child {
+    margin-bottom: 0
+  }
+  .weui-msg__desc-primary {
+      text-align: left;
+  }
+  .msg_content {
+    text-align: left;
+    font-size: 30rpx;
+    padding: 12rpx 0 0 0;
+}
+  .msg_content_bold {
+      text-align: left;
+      font-size: 31rpx;
+      font-weight: bold;
+      padding: 12rpx 0 8rpx 0;
+  }
+  .bold_text {
+      font-weight: bold;
+  }
+  .bold_ul {
+    text-decoration-line: underline;
+  }

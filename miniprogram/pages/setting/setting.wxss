@@ -1,56 +1,96 @@
 /* pages/setting/setting.wxss */
 page {
-    --footer-height: 10vh;
-    --button-size: 16vw;
-    --button-color: #353535;
-    --button-icon-size: 6vw;
-  }
-  
-  page {
-    background: #f6f6f6;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+  --footer-height: 10vh;
+  --button-size: 16vw;
+  --button-color: #353535;
+  --button-icon-size: 6vw;
+}
+
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 /* 卡片 */
 .info-card {
-    background-color: #ffffff;
-    width: 90%;
-    margin: 55rpx auto;
-    padding: 33rpx 0 33rpx 25rpx;
-    border-radius: 30rpx;
-    background: -webkit-linear-gradient(to right bottom, rgba(19, 193, 96, 0.9), rgba(19, 211, 96, 0.6),  rgba(19, 211, 96, 0.1));
-    background: linear-gradient(to right bottom, rgba(19, 193, 96, 0.9), rgba(19, 211, 96, 0.6),  rgba(19, 211, 96, 0.1));
-  }
-  .user-info {
-      margin-left: 3vw;
-  }
-  .user-name {
-    font-size: 42rpx;
-  }
-  .eid {
-    font-size: 36rpx;
-    display: block;
-    color: #333333;
-    margin-top: 5rpx;
-  }
-  .detail {
-    font-size: 30rpx;
-    display: block;
-    color: #333333;
-    margin-top: 5rpx;
-  }
-  .detail :first-child{
-    margin-right: 4vw;
-  }
-  .setting {
-      width: 93%;
-      margin: 0 auto;
-  }
-  .weui-cells {
-    border-radius: 33rpx;
-    border-color: rgba(0, 0, 0, .1);
-  }
-  .weui-btn {
-      margin-top: 6vh;
-  }
+  background-color: #ffffff;
+  width: 90%;
+  margin: 55rpx auto;
+  padding: 33rpx 0 33rpx 25rpx;
+  border-radius: 30rpx;
+  background: -webkit-linear-gradient(to right bottom, rgba(19, 193, 96, 0.9), rgba(19, 211, 96, 0.6), rgba(19, 211, 96, 0.1));
+  background: linear-gradient(to right bottom, rgba(19, 193, 96, 0.9), rgba(19, 211, 96, 0.6), rgba(19, 211, 96, 0.1));
+}
+
+.user-info {
+  margin-left: 3vw;
+}
+
+.user-name {
+  font-size: 42rpx;
+}
+
+.eid {
+  font-size: 36rpx;
+  display: block;
+  color: #333333;
+  margin-top: 5rpx;
+}
+
+.detail {
+  font-size: 30rpx;
+  display: block;
+  color: #333333;
+  margin-top: 5rpx;
+}
+
+.detail :first-child {
+  margin-right: 4vw;
+}
+
+.setting {
+  width: 93%;
+  margin: 0 auto;
+}
+
+.weui-cells {
+  border-radius: 33rpx;
+  border-color: rgba(0, 0, 0, .1);
+}
+
+.weui-btn {
+  margin-top: 6vh;
+}
+
+.cell {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 40rpx;
+  text-align: left;
+}
+
+.weui-cell_access {
+  height: 8vh;
+}
+
+.weui-cell__bd {
+  font-size: 33rpx;
+  font-weight: normal;
+}
+
+.cell-btn {
+  float: left;
+  margin: 0;
+  padding: 30rpx 0 30rpx 0;
+  width: 70vw;
+  font-size: 33rpx;
+  font-weight: normal;
+  text-align: left;
+  text-decoration: none;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  color: #000000;
+}

@@ -24,20 +24,8 @@
         <view class="weui-form__tips-area">
             <view class="weui-form__tips">
                 本小程序内获取的用户信息仅用于确认用户身份及公司内部信息填报，您提交的信息仅管理员可见。
+                在开始使用本小程序前，请仔细阅读并充分理解<navigator id="js_tips_link" url="../privacy/privacy">《隐私政策》</navigator>。
             </view>
-
-            <text aria-role="option" aria-labelledby="js_tips_txt js_tips_link" id="js_tips_txt" class="weui-agree__text">点击下一步即表示</text>
-            <navigator id="js_tips_link" url="javascript:">同意用户协议</navigator>
-
-            <checkbox-group bindchange="checkboxChange">
-                <label aria-role="" class="weui-wa-hotarea weui-agree {{msg ? 'weui-agree_animate' : ''}}">
-                    <checkbox aria-role="" value="{{checkValue}}" class="weui-agree__checkbox-check" />
-                    <view class="weui-agree__checkbox" aria-labelledby="js_agree_txt js_agree_link" aria-role="checkbox"></view>
-                    <view class="weui-agree__text"><text aria-hidden="true" id="js_agree_txt">阅读并同意</text>
-                        <navigator id="js_agree_link">《隐私政策及用户服务协议》</navigator>
-                    </view>
-                </label>
-            </checkbox-group>
 
         </view>
         <view class="weui-footer__links">
@@ -48,6 +36,17 @@
         </view> -->
     </view>
 
+
+
+    <!-- <checkbox-group bindchange="checkboxChange">
+            <label aria-role="" class="weui-wa-hotarea weui-agree {{msg ? 'weui-agree_animate' : ''}}">
+                <checkbox aria-role="" value="{{checkValue}}" class="weui-agree__checkbox-check" />
+                <view class="weui-agree__checkbox" aria-labelledby="js_agree_txt js_agree_link" aria-role="checkbox"></view>
+                <view class="weui-agree__text"><text aria-hidden="true" id="js_agree_txt">阅读并同意</text>
+                    <navigator id="js_agree_link">《隐私政策》</navigator>
+                </view>
+            </label>
+        </checkbox-group> -->
 
 
 

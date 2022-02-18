@@ -153,7 +153,7 @@ view {
 }
 .logo-container {
   text-align: center;
-  padding: 150rpx 0 55rpx 0;
+  padding: 7vh 0 3vh 0;
 }
 .logo-container .title {
   font-size: 55rpx;
@@ -161,10 +161,10 @@ view {
 }
 .description {
   font-size: 36rpx;
-  margin: 75rpx 0 0rpx 0;
+  margin: 4vh 0 0rpx 0;
 }
 button {
-  margin: 40rpx 0 40rpx 0;
+  margin: 2vh 0 2vh 0;
   padding: 10rpx 0 10rpx 0;
 }
 .wide_btn {
@@ -172,4 +172,10 @@ button {
 }
 .weui-btn_default {
   background-color: #ffffff;
+}
+.weui-form__tips-area {
+  margin-top: 4vh;
+}
+.weui-form__tips {
+  margin-top: 1vh;
 }

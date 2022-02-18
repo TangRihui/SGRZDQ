@@ -23,7 +23,7 @@
     margin-top: 40rpx;
 }
 button {
-    margin: 100rpx 0 0 0;
+    margin: 4vh 0 0 0;
     padding: 10rpx 0 10rpx 0;
 }
 .title_center {
@@ -40,4 +40,8 @@ button {
 .title2 {
     font-size: 33rpx;
     color: #555555;
+}
+.weui-form__tips-area {
+    margin-top: 4vh;
+    margin-bottom: 0;
 }

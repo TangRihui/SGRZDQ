@@ -76,6 +76,19 @@ Page({
 
   /* 用户点击右上角分享 */
   onShareAppMessage: function () {
+        const promise = new Promise(resolve => {
+          setTimeout(() => {
+            resolve({
+              title: '职工信息管理系统',
+              imageUrl: '../../images/home.png',
+            })
+          }, 1000)
+        })
+        return {
+          title: '自定义转发标题',
+          path: '/page/register/register',
+          promise 
+        }
 
   }
 })

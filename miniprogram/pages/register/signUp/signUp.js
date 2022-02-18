@@ -15,6 +15,21 @@ Page({
     inputEid: '',
     inputPwd: '',
     inputPwdCheck: '',
+    showAgreement: false,
+    buttons: [
+      {
+        type: 'default',
+        className: '',
+        text: '拒绝',
+        value: 0
+      },
+      {
+        type: 'primary',
+        className: '',
+        text: '同意',
+        value: 1
+      }
+    ]
   },
   bindNameInput: function (e) {
     var that = this
@@ -211,6 +226,26 @@ Page({
 
     console.log("name:" + that.data.inputName, "eid:" + that.data.inputEid, "pwd:" + that.data.inputPwd, "pwdCheck:" + that.data.inputPwdCheck)
   },
+  openAgreement: function () {
+    console.log("open")
+    this.setData({
+      showAgreement: true
+    })
+    console.log(this.data.showAgreement)
+
+  },
+  buttontap(e) {
+    let that = this
+    console.log(e.detail)
+    if (e.detail.index == 1) {
+      that.submitSignup()
+    }
+    else if (e.detail.index == 0) {
+      that.setData({
+        showAgreement: false
+      })
+    }
+  },
   submitSignup: function (e) {
     var that = this
     let inputName = that.data.inputName
@@ -225,6 +260,9 @@ Page({
           content: '请确认后再次提交',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('姓名填写有误')
             }
@@ -237,6 +275,9 @@ Page({
           content: '请确认后再次提交',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('工号填写有误')
             }
@@ -249,6 +290,9 @@ Page({
           content: '请确认后再次提交',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('姓名与工号不匹配')
             }
@@ -261,6 +305,9 @@ Page({
           content: '请确认后再次提交',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('登录密码至少为4位')
             }
@@ -273,6 +320,9 @@ Page({
           content: '请确认后再次提交',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('两次输入密码不一致')
             }
@@ -285,6 +335,9 @@ Page({
           content: 'Alert识别错误',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('Alert识别错误')
             }
@@ -299,6 +352,9 @@ Page({
           content: '请确认后再次提交',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('“姓名”不得为空')
             }
@@ -311,6 +367,9 @@ Page({
           content: '请确认后再次提交',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('“工号”不得为空')
             }
@@ -323,6 +382,9 @@ Page({
           content: '请确认后再次提交',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('“密码”不得为空')
             }
@@ -335,6 +397,9 @@ Page({
           content: '请确认后再次提交',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('“确认密码”不得为空')
             }
@@ -347,6 +412,9 @@ Page({
           content: '“是否为空”识别错误',
           showCancel: false,
           success: function (res) {
+            that.setData({
+              showAgreement: false
+            })
             if (res.confirm) {
               console.log('“是否为空”识别错误')
             }
@@ -372,6 +440,9 @@ Page({
               content: '请确认姓名、工号后再次提交注册',
               showCancel: false,
               success: function (res) {
+                that.setData({
+                  showAgreement: false
+                })
                 if (res.confirm) {
                   console.log('注册失败提示，姓名与工号不匹配')
                 }
@@ -394,6 +465,9 @@ Page({
                           content: '只能使用该微信账号注册一个系统账号',
                           showCancel: false,
                           success: function (res) {
+                            that.setData({
+                              showAgreement: false
+                            })
                             if (res.confirm) {
                               console.log('微信账号已存在')
                             }
@@ -409,6 +483,9 @@ Page({
                             }
                           })
                           .then(res => {
+                            that.setData({
+                              showAgreement: false
+                            })
                             console.log(res)
                             app.globalData.name = res.data[0].name
                             app.globalData.eid = res.data[0].eid
@@ -431,6 +508,9 @@ Page({
                           content: '数据库中存在重复的openid',
                           showCancel: false,
                           success: function (res) {
+                            that.setData({
+                              showAgreement: false
+                            })
                             if (res.confirm) {
                               console.log('数据库中存在重复的openid')
                             }
@@ -445,6 +525,9 @@ Page({
                     content: '请确认密码后再次注册',
                     showCancel: false,
                     success: function (res) {
+                      that.setData({
+                        showAgreement: false
+                      })
                       if (res.confirm) {
                         console.log('注册失败提示，两次输入密码不同')
                       }
@@ -458,6 +541,9 @@ Page({
                   content: '请确认密码后再次注册',
                   showCancel: false,
                   success: function (res) {
+                    that.setData({
+                      showAgreement: false
+                    })
                     if (res.confirm) {
                       console.log('注册失败提示，密码至少为4位')
                     }
@@ -471,6 +557,9 @@ Page({
                 content: '请先完成账户注册',
                 showCancel: false,
                 success: function (res) {
+                  that.setData({
+                    showAgreement: false
+                  })
                   if (res.confirm) {
                     wx.navigateTo({
                       url: './signUp/signUp',
@@ -487,6 +576,9 @@ Page({
               content: '请确认网络正常后再次注册，或联系管理员',
               showCancel: false,
               success: function (res) {
+                that.setData({
+                  showAgreement: false
+                })
                 if (res.confirm) {
                   console.log('注册失败提示，系统错误（网络？）')
                 }

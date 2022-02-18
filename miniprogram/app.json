@@ -4,6 +4,7 @@
         "pages/home/home",
         "pages/register/signUp/signUp",
         "pages/register/signIn/signIn",
+        "pages/privacy/privacy",
         "pages/index/index",
         "pages/addFunction/addFunction",
         "pages/deployFunctions/deployFunctions",
@@ -14,7 +15,7 @@
         "pages/register/forgotPwd/forgotPwd",
         "pages/home/show_info/show_info",
         "pages/setting/QnA/QnA"
-    ],
+        ],
     "window": {
         "backgroundColor": "#07c160",
         "backgroundTextStyle": "light",
