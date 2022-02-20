@@ -12,7 +12,7 @@ Page({
     type: 0,
     types: ['用户', '小班组管理员', '大班组管理员', '系统管理员']
   },
-  log_out: function(e) {
+  log_out: function (e) {
     wx.clearStorage()
     app.globalData.openid = ''
     app.globalData.name = ''
@@ -76,19 +76,17 @@ Page({
 
   /* 用户点击右上角分享 */
   onShareAppMessage: function () {
-        const promise = new Promise(resolve => {
-          setTimeout(() => {
-            resolve({
-              title: '职工信息管理系统',
-              imageUrl: '../../images/home.png',
-            })
-          }, 1000)
+    const promise = new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title: '职工信息管理系统',
+          imageUrl: '../../images/logo.jpg',
         })
-        return {
-          title: '自定义转发标题',
-          path: '/page/register/register',
-          promise 
-        }
-
+      }, 500)
+    })
+    return {
+      path: '/page/register/register',
+      promise
+    }
   }
 })
