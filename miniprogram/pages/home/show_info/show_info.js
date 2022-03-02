@@ -14,10 +14,20 @@ Page({
     wx.showLoading({
       title: '正在加载中...',
     })
+    setTimeout(() => {
+      wx.hideLoading({
+        success: (res) => {
+          console.log(获取班组成员信息超时)
+        },
+      })
+    }, 20000);
+    console.log(app.globalData.type, app.globalData.group)
+    
     wx.cloud.callFunction({
       name: "getDB",
       data: {
-        type: app.globalData.type
+        type: app.globalData.type,
+        group: app.globalData.group
       },
       complete: res => {
         console.log(res)
@@ -45,6 +55,9 @@ Page({
         wx.hideLoading({
           success: (res) => {},
         })
+
+
+
         // wx.cloud.downloadFile({
         //     fileID: url
         //   })
@@ -76,6 +89,7 @@ Page({
 
     /* 生命周期函数--监听页面加载 */
     onLoad: function (options) {
+      var that = this
       DBusers.where({
         openid: app.globalData.openid
       })
@@ -84,9 +98,27 @@ Page({
         console.log(res.data)
         if (res.data.length == 1) {
           app.globalData.type = res.data[0].type
-          this.setData({
-            type: res.data[0].type
+          app.globalData.group = res.data[0].group
+          that.setData({
+            type: res.data[0].type,
+            group: res.data[0].group
+
           })
+          console.log(app.globalData.type, app.globalData.group)
+          wx.cloud.callFunction({
+            name: "getDB",
+            data: {
+              type: app.globalData.type,
+              group: app.globalData.group
+            },
+            complete: res => {
+              console.log(res)
+              console.log(res.result.usersInfo)
+              that.setData({
+                usersInfo: res.result.usersInfo
+              })
+            }
+          })      
         }
         else {
           wx.showModal({

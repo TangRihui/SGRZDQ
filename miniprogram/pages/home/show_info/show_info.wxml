@@ -2,18 +2,34 @@
 <mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
 </mp-navigation-bar>
 <view>
-    <button class="weui-btn weui-btn_primary wide_btn" bindtap="getUrl"> 获取班组成员信息 </button>
-    <view class="weui-form__tips-area">
-        <view class="weui-form__tips">
-            点击上方「获取班组成员信息」按钮后，复制下方文本框内链接。打开浏览器，访问该链接即可下载该excel表格。
-        </view>
-    </view>
-    <textarea class="link_area" placeholder="成功获取班组成员信息后，excel表格的下载链接将显示在该文本框中。" value="{{dlUrl}}"></textarea>
+    <button class="weui-btn weui-btn_primary wide_btn" bindtap="getUrl"> 导出班组成员信息 </button>
+
+    <textarea class="link_area" placeholder="点击上方「获取班组成员信息」按钮，成功获取信息后，复制该文本框中的链接，在浏览器中访问该链接即可下载excel表格。" value="{{dlUrl}}"></textarea>
     <view class="weui-form__tips-area">
         <view class="weui-form__tips" wx:if="{{dlUrl!=''}}">
             该文件生成时间：{{creatDate}} {{creatTime}}
         </view>
     </view>
+
+
+    <view class="users_list">
+    <view class="title">
+        <text>查看/修改成员信息</text>
+    </view>
+        <view class="weui-cells weui-cells_after-title">
+            <navigator wx:for="{{usersInfo}}" url="./show_user/show_user?userEid={{item.eid}}" class="weui-cell weui-cell_access cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view class="name">{{item.name}}</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+    </view>
+
+
+
+
+
     <view class="weui-form__tips-area">
         <view class="weui-form__tips">
             本小程序内收集的用户信息仅用于公司内部信息填报，禁止用于其他用途，请确保该文件去向的安全性。

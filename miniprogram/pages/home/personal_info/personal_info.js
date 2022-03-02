@@ -154,6 +154,15 @@ Page({
           tel: res.data[0].tel,
           id_no: res.data[0].id_no,
           id_add: res.data[0].id_add,
+          work_date: res.data[0].work_date,
+          arr_date: res.data[0].arr_date,
+          work_type: res.data[0].work_type,
+          post: res.data[0].post,
+          post_hr: res.data[0].post_hr,
+          post_no: res.data[0].post_no,
+          post_level: res.data[0].post_level,
+          first_work: res.data[0].first_work,
+          
         })
         console.log("sex" + ":" + that.data.sex, "birth" + ":" + that.data.birth,
           "age" + ":" + that.data.age, "native" + ":" + that.data.native,

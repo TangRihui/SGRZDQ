@@ -1,0 +1,349 @@
+<!--pages/home/show_info/show_user/show_user.wxml-->
+<!--pages/home/personal_info/personal_info.wxml-->
+<mp-navigation-bar color="#fff" background="#07c160" title="{{navTitle}}" back="{{back}}">
+</mp-navigation-bar>
+<page-meta root-font-size="system" />
+<view class="page" data-weui-theme="{{theme}}" data-weui-mode="{{mode}}">
+    <view class="weui-form">
+        <view class="weui-form__text-area">
+            <h2 class="weui-form__title">查看/修改成员信息</h2>
+        </view>
+        <view class="weui-form__control-area">
+            <view class="weui-cells__group weui-cells__group_form">
+                <view class="weui-cells__title">当前查看用户</view>
+                <view class="weui-cells">
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">姓名</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userName}}" bindinput="nameInput" disabled />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">工号</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userEid}}" type="number" bindinput="eidInput" disabled />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">班组</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userGroup}}" placeholder="例:轧钢甲班（卷取）/轧钢甲班" bindinput="groupInput" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cells__group weui-cells__group_form">
+                <view class="weui-cells__title">基本信息</view>
+                <view class="weui-cells">
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">性别</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="sexPickerChange" range="{{sexOptions}}">
+                                <view class="weui-select">{{sexOptions[userSex]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">出生日期</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="birthPickerChange" mode="date" start="1950-01-01" end="2005-01-01" value="{{birth}}">
+                                <view class="weui-select">{{userBirth}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">年龄</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userAge}}" placeholder="填写年龄" bindinput="ageInput" type="number" maxlength="2" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">籍贯</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userNative}}" placeholder="填写籍贯" bindinput="nativeInput" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cells__group weui-cells__group_form">
+                <view class="weui-cells__title">个人信息</view>
+                <view class="weui-cells">
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">现居地</label>
+                            <view class="weui-cell__desc">仅用于信息填报</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userAdd}}" placeholder="填写现居住地址" bindinput="addInput" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">政治面貌</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="politicPickerChange" range="{{politicOptions}}">
+                                <view class="weui-select">{{politicOptions[userPolitic]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">联系电话</label>
+                            <view class="weui-cell__desc">仅用于信息填报</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userTel}}" placeholder="填写常用电话号码" bindinput="telInput" type="number" placeholder-class="weui-input__placeholder" maxlength="11" />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">身份证号</label>
+                            <view class="weui-cell__desc">仅用于信息填报</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userId_no}}" placeholder="填写身份证号" bindinput="idnoInput" type="idcard" placeholder-class="weui-input__placeholder" maxlength="18" />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">身份证地址</label>
+                            <view class="weui-cell__desc">仅用于信息填报</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userId_add}}" placeholder="填写身份证地址" bindinput="idaddInput" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cells__group weui-cells__group_form">
+                <view class="weui-cells__title">工作信息</view>
+                <view class="weui-cells">
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">参加工作</label>
+                            <label class="weui-label">时间</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="workdatePickerChange" mode="date" start="1960-01-01" value="{{work_date}}">
+                                <view class="weui-select">{{userWork_date}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">到热轧厂</label>
+                            <label class="weui-label">时间</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="arrdatePickerChange" mode="date" start="2000-01-01" value="{{arr_date}}">
+                                <view class="weui-select">{{userArr_date}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">工种</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="worktypePickerChange" range="{{work_typeOptions}}">
+                                <view class="weui-select">{{work_typeOptions[userWork_type]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">岗位</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="postPickerChange" range="{{postOptions}}">
+                                <view class="weui-select">{{postOptions[userPost]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">HR岗位</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="posthrPickerChange" range="{{post_hrOptions}}">
+                                <view class="weui-select">{{post_hrOptions[userPost_hr]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">岗位序列</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="postnoPickerChange" range="{{post_noOptions}}">
+                                <view class="weui-select">{{post_noOptions[userPost_no]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">岗次</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="postlevelPickerChange" range="{{post_levelOptions}}">
+                                <view class="weui-select">{{post_levelOptions[userPost_level]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">第一职业</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userFirst_work}}" placeholder="填写第一职业" bindinput="firstworkInput" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cells__group weui-cells__group_form">
+                <view class="weui-cells__title">证书信息</view>
+                <view class="weui-cells">
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">鉴定等级</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="cerlevelPickerChange" range="{{cer_levelOptions}}">
+                                <view class="weui-select">{{cer_levelOptions[userCer_level]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">证书编号</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userCer_id}}" placeholder="填写证书编号" bindinput="ceridInput" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">发证日期</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="cerdatePickerChange" mode="date" start="1950-01-01" value="{{cer_date}}">
+                                <view class="weui-select">{{userCer_date}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">发证机关</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userCer_org}}" placeholder="填写发证机关" bindinput="cerorgInput" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+                </view>
+
+                <view class="weui-cells__title">学历信息</view>
+                <view class="weui-cells">
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">毕业院校</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userCollege}}" placeholder="填写毕业院校" bindinput="collegeInput" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">专业</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userMajor}}" placeholder="填写专业" bindinput="majorInput" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">学历</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <view class="weui-cell__bd">
+                                <picker aria-role="combobox" bindchange="eduPickerChange" range="{{eduOptions}}">
+                                    <view class="weui-select">{{eduOptions[userEdu]}}</view>
+                                </picker>
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">学位</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="degreePickerChange" range="{{degreeOptions}}">
+                                <view class="weui-select">{{degreeOptions[userDegree]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                </view>
+                <view class="weui-cells__group weui-cells__group_form"></view>
+                <view class="weui-cells__title">职称信息</view>
+                <view class="weui-cells">
+
+                    <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+                        <view class="weui-cell__hd">
+                            <label class="weui-label">职称</label>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker aria-role="combobox" bindchange="post_titlePickerChange" range="{{post_titleOptions}}">
+                                <view class="weui-select">{{post_titleOptions[userPost_title]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+
+                    <view class="weui-cell weui-cell_active">
+                        <view class="weui-cell__hd"><label class="weui-label">证书号</label></view>
+                        <view class="weui-cell__bd">
+                            <input class="weui-input" value="{{userPost_id}}" placeholder="填写证书号" bindinput="postidInput" placeholder-class="weui-input__placeholder" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+        <view class="weui-form__tips-area">
+            <view class="weui-form__tips">
+                以上信息用于职工信息填报，仅指定管理员可见。
+            </view>
+            <view class="weui-form__tips">
+                本小程序使用微信云开发服务，复用微信私有协议及链路，保证业务安全性。
+            </view>
+            <view class="weui-form__tips">
+                <text aria-role="option" aria-labelledby="js_tips_txt js_tips_link" id="js_tips_txt" class="weui-agree__text">阅读</text>
+                <navigator id="js_tips_link" url="../../privacy/privacy">《隐私政策》</navigator>
+            </view>
+        </view>
+    </view>
+    <view class="footer">
+        <view class="submit" bindtap="submitForm">保存</view>
+    </view>
+</view>

@@ -78,7 +78,6 @@ Page({
       first_work: e.detail.value
     });
     console.log(this.data.first_work)
-
   },
   submitJob(e) {
     let that = this

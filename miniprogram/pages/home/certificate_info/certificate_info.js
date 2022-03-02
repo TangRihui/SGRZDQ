@@ -16,7 +16,7 @@ Page({
     cer_org: '',
     college: '',
     major: '',
-    eduOptions: ['点击选择', '研究生', '大学本科'],
+    eduOptions: ['点击选择', '研究生', '大学本科', '大学专科', '专科院校', '中等专业学校', '高级技校', '技校', '高中', '职高', '初中', '小学', '其它'],
     edu: 0,
     degreeOptions: ['点击选择', '博士', '硕士', '学士'],
     degree: 0,
@@ -49,7 +49,6 @@ Page({
     });
     console.log(this.data.cer_org)
   },
-  // 表单输入处理函数
   collegeInput(e) {
     this.setData({
       college: e.detail.value
@@ -74,7 +73,6 @@ Page({
     });
     console.log(this.data.degree)
   },
-  // 表单输入处理函数
   posttitlePickerChange(e) {
     this.setData({
       post_title: parseInt(e.detail.value),
