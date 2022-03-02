@@ -162,9 +162,6 @@ exports.main = async (event, context) => {
 
         }
 
-
-
-
         var dataCVS = `${xlsxName}-${day}-${time}.xlsx`
         //声明一个Excel表
         var alldata = [];
@@ -236,7 +233,6 @@ exports.main = async (event, context) => {
             arr.push(usersInfo[key].note);
             alldata.push(arr)
         }
-
 
         var buffer = await xlsx.build([{
             name: "usersBackup",

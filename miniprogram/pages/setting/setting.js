@@ -35,13 +35,8 @@ Page({
   },
   /* 生命周期函数--监听页面加载 */
   onLoad: function (options) {
-    console.log(app.globalData.name)
-    this.setData({
-      name: app.globalData.name,
-      eid: app.globalData.eid,
-      group: app.globalData.group,
-      type: app.globalData.type,
-    })
+    console.log(app.globalData.name, app.globalData.eid)
+
   },
 
   /* 生命周期函数--监听页面初次渲染完成 */
@@ -51,7 +46,13 @@ Page({
 
   /* 生命周期函数--监听页面显示 */
   onShow: function () {
-
+    console.log(app.globalData.name, app.globalData.eid)
+    this.setData({
+      name: app.globalData.name,
+      eid: app.globalData.eid,
+      group: app.globalData.group,
+      type: app.globalData.type,
+    })
   },
 
   /* 生命周期函数--监听页面隐藏 */

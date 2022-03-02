@@ -89,6 +89,11 @@ Page({
       .get()
       .then(res => {
         console.log(res.data.length, res.data[0])
+        app.globalData.name = res.data[0].name
+        app.globalData.eid = res.data[0].eid
+        app.globalData.group = res.data[0].group
+        app.globalData.type = res.data[0].type
+        console.log(app.globalData.name, app.globalData.type)
         if (res.data.length == 0) {
           wx.showModal({
             title: '登录失败',
@@ -131,10 +136,12 @@ Page({
               url: '../../home/home',
               success: function (res) {
                 console.log("登录成功")
+                console.log(app.globalData.name, app.globalData.type)
+
                 wx.showToast({
                   title: '登录成功',
                   icon: 'success',
-                  duration: 1500
+                  duration: 2000
                 })
               }
             })
